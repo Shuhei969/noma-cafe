@@ -4,9 +4,9 @@
 #
 #  id            :bigint           not null, primary key
 #  content       :text
+#  name          :string           not null
 #  outlet        :integer
 #  shop_url      :text
-#  title         :string           not null
 #  wifi          :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
