@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_000924) do
+ActiveRecord::Schema.define(version: 2020_07_01_012501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.bigint "prefecture_id"
+    t.bigint "city_id"
+    t.integer "wifi"
+    t.integer "outlet"
+    t.text "content"
+    t.text "shop_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_articles_on_city_id"
+    t.index ["prefecture_id"], name: "index_articles_on_prefecture_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "cities", force: :cascade do |t|
     t.bigint "prefecture_id", null: false
