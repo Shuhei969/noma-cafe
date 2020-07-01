@@ -1,0 +1,10 @@
+= form_with() do |f|
+  = f.collection_select :prefecture, Prefecture.all, :id, :name, include_blank: "カテゴリーを選択してください"
+
+  = f.select :city, [], include_blank: "---", class: "default-city-select"
+
+  - Prefecture.all.each do |prefecture|
+    %template{id: "city-of-prefecture#{prefecture.id}"}
+      = f.collection_select :city, prefecture.cities, :id, :name
+
+= javascript_pack_tag 'prefecture'
