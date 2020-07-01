@@ -5,8 +5,8 @@
 #  id            :bigint           not null, primary key
 #  address       :string
 #  content       :text
-#  name          :string           not null
 #  outlet        :integer
+#  shop_name     :string           not null
 #  shop_url      :text
 #  wifi          :integer
 #  created_at    :datetime         not null

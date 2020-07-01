@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(
-      :name,
+      :shop_name,
       :prefecture_id,
       :city_id,
       :address,
