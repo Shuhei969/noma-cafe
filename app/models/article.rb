@@ -3,6 +3,7 @@
 # Table name: articles
 #
 #  id            :bigint           not null, primary key
+#  address       :string
 #  content       :text
 #  name          :string           not null
 #  outlet        :integer
@@ -21,9 +22,9 @@
 #  index_articles_on_user_id        (user_id)
 #
 class Article < ApplicationRecord
-  enum wifi: { available: 0, none: 1 }
-  enum outlet: { available: 0, none: 1 }
-  
+  enum wifi: { available_wifi: 0, disavailable_wifi: 1 }
+  enum outlet: { available_outlet: 0, disavailable_outlet: 1 }
+
   belongs_to :user
   belongs_to :prefecture
   belongs_to :city

@@ -3,6 +3,7 @@
 # Table name: articles
 #
 #  id            :bigint           not null, primary key
+#  address       :string
 #  content       :text
 #  name          :string           not null
 #  outlet        :integer

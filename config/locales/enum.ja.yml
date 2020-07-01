@@ -1,0 +1,10 @@
+ja:
+  # ラジオボタンにする予定なのでいらないかもしれない
+  enum:
+    wifi:
+      available_wifi: 'あり'
+      disavailable_wifi: 'なし'
+    
+    outlet:
+      available_outlet: 'あり'
+      disavailable_outlet: 'なし'
