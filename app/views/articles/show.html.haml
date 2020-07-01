@@ -2,4 +2,5 @@
 = @article.prefecture.name
 = @article.city.name
 = @article.address
-= image_tag @article.eyecatch
+- if @article.eyecatch.present?
+  = image_tag @article.eyecatch

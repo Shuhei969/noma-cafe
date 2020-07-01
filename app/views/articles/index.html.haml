@@ -1,0 +1,28 @@
+.container
+  - @articles.each do |article|
+    = link_to article_path(article) do
+      .card
+        .card_image
+          - if article.eyecatch.present?
+            = image_tag article.eyecatch
+        .card_content
+          .shop-name
+            %h2= article.shop_name
+          .shop-area
+            %p= article.prefecture.name
+            %p= article.city.name
+          .ahop-address
+            %p= article.address
+          .shop-facility
+            #{I18n.t("enum.wifi.#{article.wifi}")}
+            #{I18n.t("enum.outlet.#{article.outlet}")}
+          .card-detail
+            .card-avatar
+              = image_tag 'default-avatar.png'
+            .card-create_at
+              = article.display_created_at
+            .card-haert
+              = image_tag 'heart.svg'
+          
+
+            
