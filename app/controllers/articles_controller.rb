@@ -31,7 +31,8 @@ class ArticlesController < ApplicationController
       :wifi,
       :outlet,
       :content,
-      :shop_url
+      :shop_url,
+      :eyecatch
     )
   end
 end

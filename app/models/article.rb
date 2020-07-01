@@ -25,6 +25,7 @@ class Article < ApplicationRecord
   enum wifi: { available_wifi: 0, disavailable_wifi: 1 }
   enum outlet: { available_outlet: 0, disavailable_outlet: 1 }
 
+  has_one_attached :eyecatch
   belongs_to :user
   belongs_to :prefecture
   belongs_to :city
