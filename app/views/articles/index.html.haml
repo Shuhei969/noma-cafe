@@ -2,27 +2,30 @@
   - @articles.each do |article|
     = link_to article_path(article) do
       .card
-        .card_image
+        .card-image
           - if article.eyecatch.present?
             = image_tag article.eyecatch
-        .card_content
-          .shop-name
+          - else
+            = image_tag 'no-image.png'
+        .card-content
+          .card-shop_name
             %h2= article.shop_name
-          .shop-area
-            %p= article.prefecture.name
-            %p= article.city.name
-          .ahop-address
-            %p= article.address
-          .shop-facility
+          .card-shop_area
+            = "エリア：#{article.prefecture.name}"
+            .card-city-box
+              = article.city.name
+          .card-shop_address
+            %p= "住所：#{article.address}"
+          .card-shop_facility
             #{I18n.t("enum.wifi.#{article.wifi}")}
             #{I18n.t("enum.outlet.#{article.outlet}")}
           .card-detail
             .card-avatar
               = image_tag 'default-avatar.png'
-            .card-create_at
               = article.display_created_at
-            .card-haert
+            .card-heart
               = image_tag 'heart.svg'
-          
+      
+
 
             
