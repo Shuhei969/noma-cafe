@@ -1,0 +1,30 @@
+@import 'variables';
+
+$avatar-size: 40px;
+$header-padding-y: 12px;
+$back-icon-size: 16px;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 16px 16px 0 16px;
+    font-weight: bold;
+    border-bottom: 3px solid #f2f2f2;
+  
+    a {
+      color: #616161;
+    }
+
+    &_pageTitle {
+      font-size: 24px;
+      line-height: $avatar-size;
+    }
+
+    &_avatar {
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 999px;
+    }
+  }
+  
