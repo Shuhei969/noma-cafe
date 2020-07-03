@@ -8,17 +8,23 @@ input {
 }
 
 label {
-  font-size: 12px;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 textarea, trix-editor {
   width: 100%;
   margin: 8px 0px;
   padding: 8px 8px;
-  min-height: 440px;
+  min-height: 220px;
+  max-width: 60%;
   resize: vertical;
   border: 1px solid #EBEBEB;
   &.sm {
     min-height: 160px;
   }
+}
+
+select {
+  border: 1px solid #EBEBEB;
 }

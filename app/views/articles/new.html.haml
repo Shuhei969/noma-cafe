@@ -5,13 +5,13 @@
 
   = form_with(model: @article, local: true) do |f|
     %div
-      = f.label :eyecatch, 'アイキャッチ画像'
-    %div
+      = f.label :eyecatch, 'アイキャッチ画像：'
+    %div 
       = f.file_field :eyecatch
     %div
-      = f.label :shop_name, '店舗名'
-    %div
-      = f.text_field :shop_name
+      = f.label :shop_name, '店舗名：'
+    %div 
+      = f.text_field :shop_name, class: 'text'
     %div
       = f.label :prefecture, 'エリア'
     %div
@@ -23,7 +23,7 @@
     %div
       = f.label :addreses, '住所'
     %div
-      = f.text_field :address
+      = f.text_field :address, class: 'text'
     %div
       = f.label :wifi, 'Wi-Fi'
     %div
@@ -41,15 +41,16 @@
     %div
       = f.label :auther_comment, 'ひとことコメント'
     %div
-      = f.text_field :auther_comment
+      = f.text_field :auther_comment, class: 'text'
     %div
       = f.label :content, 'メモ'
     %div
-      = f.text_area :content
+      = f.text_area :content, class: 'textarea'
     %div
       = f.label :shop_url, 'URL'
     %div
-      = f.text_field :shop_url
-    = f.submit "保存"
+      = f.text_field :shop_url, class: 'text'
+    %div 
+      = f.submit "保存", class: 'btn-primary'
 
 = javascript_pack_tag 'prefecture'
