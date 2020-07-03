@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Prefecture < ApplicationRecord
-  has_many :cities
+  # has_many :cities
+  has_many :areas
   has_many :articles
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_064446) do
+ActiveRecord::Schema.define(version: 2020_07_03_021449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2020_07_01_064446) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "areas", force: :cascade do |t|
+    t.bigint "prefecture_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prefecture_id"], name: "index_areas_on_prefecture_id"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "shop_name", null: false
@@ -48,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_064446) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "address"
+    t.bigint "area_id", null: false
+    t.index ["area_id"], name: "index_articles_on_area_id"
     t.index ["city_id"], name: "index_articles_on_city_id"
     t.index ["prefecture_id"], name: "index_articles_on_prefecture_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
@@ -80,4 +90,5 @@ ActiveRecord::Schema.define(version: 2020_07_01_064446) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "areas"
 end

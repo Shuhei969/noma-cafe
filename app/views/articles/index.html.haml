@@ -13,7 +13,8 @@
           .card-shop_area
             = "エリア：#{article.prefecture.name}"
             .card-city-box
-              = article.city.name
+              - if article.area.name.present?
+                = article.area.name
           .card-shop_address
             %p= "住所：#{article.address}"
           .card-shop_facility

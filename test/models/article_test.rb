@@ -11,15 +11,21 @@
 #  wifi          :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  area_id       :bigint           not null
 #  city_id       :bigint
 #  prefecture_id :bigint
 #  user_id       :bigint           not null
 #
 # Indexes
 #
+#  index_articles_on_area_id        (area_id)
 #  index_articles_on_city_id        (city_id)
 #  index_articles_on_prefecture_id  (prefecture_id)
 #  index_articles_on_user_id        (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (area_id => areas.id)
 #
 require 'test_helper'
 

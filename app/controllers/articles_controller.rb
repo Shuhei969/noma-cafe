@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(
       :shop_name,
       :prefecture_id,
-      :city_id,
+      :area_id,
       :address,
       :wifi,
       :outlet,

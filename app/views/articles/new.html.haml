@@ -16,10 +16,10 @@
       = f.label :prefecture, 'エリア'
     %div
       = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "所在地を選択してください"
-      = f.select :city_id, [], include_blank: "---", class: "default-city-select"
+      = f.select :area_id, [], include_blank: "---", class: "default-city-select"
       - Prefecture.all.each do |prefecture|
-        %template{id: "city-of-prefecture#{prefecture.id}"}
-          = f.collection_select :city_id, prefecture.cities, :id, :name
+        %template{id: "area-of-prefecture#{prefecture.id}"}
+          = f.collection_select :area_id, prefecture.areas, :id, :name
     %div
       = f.label :addreses, '住所'
     %div
