@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('DOMContentLoaded', function() {
 
   let prefectureVal = $('#article_prefecture_id').val();
   if (prefectureVal !== "") {
@@ -21,6 +21,7 @@ $(document).on('turbolinks:load', function() {
    };
  });
 });
+
 
 // $(document).on('turbolinks:load', function() {
 
