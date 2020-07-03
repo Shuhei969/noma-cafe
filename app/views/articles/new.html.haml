@@ -39,6 +39,10 @@
       = f.radio_button :outlet, :disavailable_outlet
       = f.label :outlet, 'なし'
     %div
+      = f.label :auther_comment, 'ひとことコメント'
+    %div
+      = f.text_field :auther_comment
+    %div
       = f.label :content, 'メモ'
     %div
       = f.text_area :content

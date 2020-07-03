@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_021449) do
+ActiveRecord::Schema.define(version: 2020_07_03_030227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2020_07_03_021449) do
     t.bigint "user_id", null: false
     t.string "shop_name", null: false
     t.bigint "prefecture_id"
-    t.bigint "city_id"
     t.integer "wifi"
     t.integer "outlet"
     t.text "content"
@@ -57,8 +56,8 @@ ActiveRecord::Schema.define(version: 2020_07_03_021449) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "address"
     t.bigint "area_id", null: false
+    t.string "auther_comment"
     t.index ["area_id"], name: "index_articles_on_area_id"
-    t.index ["city_id"], name: "index_articles_on_city_id"
     t.index ["prefecture_id"], name: "index_articles_on_prefecture_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end

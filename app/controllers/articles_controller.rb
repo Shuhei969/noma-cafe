@@ -32,7 +32,8 @@ class ArticlesController < ApplicationController
       :outlet,
       :content,
       :shop_url,
-      :eyecatch
+      :eyecatch,
+      :auther_comment
     )
   end
 end

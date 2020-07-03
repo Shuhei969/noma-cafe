@@ -24,6 +24,7 @@
             .card-avatar
               = image_tag 'default-avatar.png'
               = article.display_created_at
+              = article.auther_comment
             .card-heart
               = image_tag 'heart.svg'
   = link_to new_article_path do
