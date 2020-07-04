@@ -1,8 +1,8 @@
 input {
   &.text {
     width: 100%;
-    margin: 8px 0px;
-    padding: 16px 24px;
+    margin: 0 0 8px 0;
+    padding: 8px 8px;
     border: 1px solid #EBEBEB;
   }
 }
@@ -14,7 +14,7 @@ label {
 
 textarea, trix-editor {
   width: 100%;
-  margin: 8px 0px;
+  margin: 0 0 8px 0;
   padding: 8px 8px;
   min-height: 220px;
   max-width: 60%;
@@ -27,4 +27,5 @@ textarea, trix-editor {
 
 select {
   border: 1px solid #EBEBEB;
+  margin: 0 0 24px 0;
 }

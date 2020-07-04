@@ -18,15 +18,19 @@
           .card-shop_address
             %p= "住所：#{article.address}"
           .card-shop_facility
-            #{I18n.t("enum.wifi.#{article.wifi}")}
-            #{I18n.t("enum.outlet.#{article.outlet}")}
+            - if article.wifi == 'available_wifi'
+              .wifi-icon
+                #{I18n.t("enum.wifi.#{article.wifi}")}
+            - if article.outlet == 'available_outlet'   
+              .outlet-icon 
+                #{I18n.t("enum.outlet.#{article.outlet}")}
           .card-detail
             .card-avatar
-              = image_tag 'default-avatar.png'
-              = article.auther_comment
-              = article.display_created_at
-            .card-heart
-              = image_tag 'heart.svg'
+              = image_tag 'default-avatar.png'  
+            - if article.auther_comment.present?
+              .says
+                %p= article.auther_comment
+      
   = link_to new_article_path do
     .float_btn
       %i.fa.fa-plus

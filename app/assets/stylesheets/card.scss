@@ -6,7 +6,7 @@ $text-font-size: 1.6rem;
 
 
 .card {
-  background-color: white;
+  background-color: rgb(238, 238, 238);
   margin: 16px 0;
   cursor: pointer;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
@@ -25,12 +25,12 @@ $text-font-size: 1.6rem;
   }
 
   &-content {
-    width: 60%;
+    width: 100%;
   }
 
   &-shop_name {
     font-size: 1.6rem;
-    // margin-bottom: 4px;
+    margin-bottom: 8px;
   }
 
   &-shop_area {
@@ -50,67 +50,76 @@ $text-font-size: 1.6rem;
   }
 
   &-shop_facility {
-    font-size: $text-font-size;
+    font-size: 1.5rem;
     margin-bottom: 4px;
+
+    .wifi-icon {
+      display: inline-block;
+      background-color: #5e615f;
+      color:#fff;
+      border-radius: 5px;
+      font-weight: bold;
+      padding: 4px;
+      margin-right: 4px;
+      line-height: 20px;
+    }
+    .outlet-icon {
+      display: inline-block;
+      background-color: #5e615f;
+      color:#fff;
+      border-radius: 5px;
+      font-weight: bold;
+      padding: 4px;
+      margin-right: 8px;
+      line-height: 20px;
+    }
   }
 
   &-detail {
     cursor: pointer;
-    display: flex;
-    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+  
+    // display: flex;
+    // justify-content: space-between;
 
     img {
       width: $avatar-size;
       height: $avatar-size;
       // border-radius: 30px;
-      margin-right: 8px;
-    }
-    }
-
-    &-heart {
-      // border-radius: 100%;
-      img {
-        width: $heart-size;
-        height: $heart-size;
-        // border-radius: 30px;
-        // margin-right: 8px;
-      }
+      // margin-right: 8px;
+      vertical-align: middle;
     }
 
-  // &_heart {
-  //   display: flex;
+    .card-avatar {
+      display: inline-block;
+      line-height: 60px;
+    }
 
-  //   img {
-  //     width: $heart-size;
-  //     height: $heart-size;
-  //   }
-
-  //   span {
-  //     margin-left: 8px;
-  //     font-size: 12px;
-  //     font-weight: bold;
-  //     // color: $primary-color;
-  //     line-height: $heart-size;
-  //   }
-  // }
-
-  // 
-
-  
-
-  // &_image {
-  //   height: 180px;
-  //   position: relative;
-  //   overflow: hidden;
-
-  //   img {
-  //     position: absolute;
-  //     top: 50%;
-  //     left: 50%;
-  //     -webkit-transform: translate(-50%, -50%);
-  //     -ms-transform: translate(-50%, -50%);
-  //     transform: translate(-50%, -50%);
-  //     width: 100%;
-  //   }
-  // }
+    .says {
+      display: inline-block;
+      position: relative; 
+      margin: 0 0 0 10px;
+      padding: 12px;
+      width: 100%;
+      height: auto;
+      max-height: 60px;
+      max-width: 90%;
+      border-radius: 12px;
+      background: #fff;    
+      font-size: 1.4rem;  
+    }
+    
+    .says:after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 10px; 
+      left: -20px;
+      border: 8px solid transparent;
+      border-right: 18px solid #fff;
+      -webkit-transform: rotate(35deg);
+      transform: rotate(-6deg);
+    }
+  }
 }
