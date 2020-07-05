@@ -8,8 +8,20 @@
           - else
             = image_tag 'no-image.png'
         .card-content
-          .card-shop_name
-            %h2= article.shop_name
+          .card-header
+            .card-shop_name
+              %h2= article.shop_name
+            - if user_signed_in?
+              - if current_user.has_liked?(article)
+                .card-heart
+                  = link_to article_like_path(article), data: { method: 'delete' } do
+                    = image_tag 'heart-active.svg'
+                    %span= article.like_count
+              - else
+                .card-heart
+                  = link_to article_like_path(article), data: { method: 'post' } do
+                    = image_tag 'heart.svg'
+                    %span= article.like_count
           .card-shop_area
             = "エリア：#{article.prefecture.name}"
             .card-city-box
@@ -26,10 +38,14 @@
                 #{I18n.t("enum.outlet.#{article.outlet}")}
           .card-detail
             .card-avatar
-              = image_tag 'default-avatar.png'  
+              -if current_user.profile.avatar.present?
+                = image_tag current_user.profile.avatar
+              - else
+                = image_tag 'default-avatar.png'  
             - if article.auther_comment.present?
               .says
                 %p= article.auther_comment
+            
       
   = link_to new_article_path do
     .float_btn
