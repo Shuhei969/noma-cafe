@@ -1,0 +1,56 @@
+.container
+  %ul
+    - article.errors.full_messages.each do |message|
+      %li= message
+
+  = form_with(model: article, local: true) do |f|
+    %div
+      = f.label :eyecatch, 'アイキャッチ画像：'
+    %div 
+      = f.file_field :eyecatch
+    %div
+      = f.label :shop_name, '店舗名：'
+    %div 
+      = f.text_field :shop_name, class: 'text'
+    %div
+      = f.label :prefecture, 'エリア'
+    %div
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "所在地を選択してください"
+      = f.select :area_id, [], include_blank: "---", class: "default-city-select"
+      - Prefecture.all.each do |prefecture|
+        %template{id: "area-of-prefecture#{prefecture.id}"}
+          = f.collection_select :area_id, prefecture.areas, :id, :name
+    %div
+      = f.label :addreses, '住所'
+    %div
+      = f.text_field :address, class: 'text'
+    %div
+      = f.label :wifi, 'Wi-Fi'
+    %div
+      = f.radio_button :wifi, :available_wifi, checked: true
+      = f.label :wifi, 'あり'
+      = f.radio_button :wifi, :disavailable_wifi
+      = f.label :wifi, 'なし'
+    %div
+      = f.label :outlet, '電源コンセント'
+    %div
+      = f.radio_button :outlet, :available_outlet, checked: true
+      = f.label :outlet, 'あり'
+      = f.radio_button :outlet, :disavailable_outlet
+      = f.label :outlet, 'なし'
+    %div
+      = f.label :auther_comment, 'ひとことコメント'
+    %div
+      = f.text_field :auther_comment, class: 'text'
+    %div
+      = f.label :content, 'メモ'
+    %div
+      = f.text_area :content, class: 'textarea'
+    %div
+      = f.label :shop_url, 'URL'
+    %div
+      = f.text_field :shop_url, class: 'text'
+    %div 
+      = f.submit "保存", class: 'btn-primary'
+
+= javascript_pack_tag 'prefecture'
