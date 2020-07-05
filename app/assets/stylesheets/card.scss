@@ -28,9 +28,17 @@ $text-font-size: 1.6rem;
     width: 100%;
   }
 
+  &-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &-shop_name {
     font-size: 1.6rem;
     margin-bottom: 8px;
+  }
+  &-heart {
+    
   }
 
   &-shop_area {

@@ -29,8 +29,8 @@
 class Article < ApplicationRecord
   enum wifi: { available_wifi: 0, disavailable_wifi: 1 }
   enum outlet: { available_outlet: 0, disavailable_outlet: 1 }
-
-  has_one_attached :eyecatch
+  has_many :likes, dependent: :destroy
+  has_one_attached :eyecatch, dependent: :destroy
   belongs_to :user
   belongs_to :prefecture
   # belongs_to :city
@@ -38,5 +38,9 @@ class Article < ApplicationRecord
 
   def display_created_at
     I18n.l(self.created_at, format: :default)
+  end
+
+  def like_count
+    likes.count
   end
 end
