@@ -16,9 +16,12 @@
         = link_to 'NOMAD CAFE', root_path
       - if user_signed_in? 
         .dropdown
-          = image_tag 'default-avatar.png', class: 'header_avatar'
+          - if current_user.profile.avatar.present?
+            = image_tag current_user.profile.avatar, class: 'header_avatar'
+          - else
+            = image_tag 'default-avatar.png', class: 'header_avatar'
           .dropdown-content
-            = link_to "プロフィール",root_path
+            = link_to "プロフィール",profile_path
             = link_to "ログアウト", destroy_user_session_path,data: { method: "delete" }
       - else
         = link_to "ログイン", new_user_session_path, class: "header_loginBtn"
