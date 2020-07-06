@@ -22,11 +22,14 @@
                   = link_to article_like_path(article), data: { method: 'post' } do
                     = image_tag 'heart.svg'
                     %span= article.like_count
+            - else
+              .card-heart
+                = link_to article_like_path(article), data: { method: 'post' } do
+                  = image_tag 'heart.svg'
+                  %span= article.like_count
           .card-shop_area
             = "エリア：#{article.prefecture.name}"
-            .card-city-box
-              - if article.area.name.present?
-                = article.area.name
+            %span= article.area.name 
           .card-shop_address
             %p= "住所：#{article.address}"
           .card-shop_facility
@@ -38,21 +41,21 @@
                 #{I18n.t("enum.outlet.#{article.outlet}")}
           .card-detail
             .card-avatar
-              -if current_user.profile.avatar.present?
-                = image_tag current_user.profile.avatar
+              -if article.user.profile.present?
+                = image_tag article.user.profile.avatar
               - else
-                = image_tag 'default-avatar.png'  
-            - if article.auther_comment.present?
+                = image_tag 'default-avatar.png' 
+              %p= article.user.display_name
+            .card-comment 
               .says
-                %p= article.auther_comment
+                %P= article.auther_comment
+          .card-create_day
+            %p= "投稿日：#{article.display_created_at}"
+                  
+  
+    
+
             
-      
-  = link_to new_article_path do
-    .float_btn
-      %i.fa.fa-plus
 
-
-            
-
-
+-# - if article.auther_comment.present?
   

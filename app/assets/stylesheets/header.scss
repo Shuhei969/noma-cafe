@@ -8,7 +8,7 @@ $back-icon-size: 16px;
     display: flex;
     justify-content: space-between;
     background-color: #ffffff;
-    padding: 16px 16px 0 16px;
+    padding: 12px;
     font-weight: bold;
     border-bottom: 3px solid #f2f2f2;
   
@@ -20,6 +20,21 @@ $back-icon-size: 16px;
       font-size: 24px;
       line-height: $avatar-size;
     }
+
+    &-right {
+      display: flex;
+    }
+
+    &-post {
+      display: inline-block;
+      line-height: auto;
+      font-size: 1.5rem;
+      margin-right: 16px;
+      border: 1px solid #616161;
+      border-radius: 5px;
+      padding: 8px;
+    }
+
 
     &_avatar {
       width: $avatar-size;

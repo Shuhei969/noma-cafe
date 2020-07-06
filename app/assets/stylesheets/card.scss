@@ -1,7 +1,7 @@
 @import './variables';
 
 $heart-size: 24px;
-$avatar-size: 32px;
+$avatar-size: 40px;
 $text-font-size: 1.6rem; 
 
 
@@ -14,10 +14,11 @@ $text-font-size: 1.6rem;
   padding: 16px;
 
   &-image {
-    width: 40%;
+    width: 100%;
     max-width: 200px;
     max-height: 200px;
-    margin-right: 16px;
+    margin-right: 100px;
+    
     img {
       width: 100%;
       height: auto;
@@ -37,20 +38,19 @@ $text-font-size: 1.6rem;
     font-size: 1.6rem;
     margin-bottom: 8px;
   }
-  &-heart {
-    
+
+  .card-heart {
+    img {
+      width: $heart-size;
+      height: $heart-size;
+    }
   }
 
   &-shop_area {
     font-size: $text-font-size;
     margin-bottom: 4px;
-    display: inline-block;
   }
   
-  &-city-box {
-    display: inline-block;
-  }
-
   &-shop_address {
     font-size: $text-font-size;
     margin-bottom: 4px;
@@ -84,50 +84,49 @@ $text-font-size: 1.6rem;
   }
 
   &-detail {
+    margin-top: 12px;
     cursor: pointer;
-    height: 60px;
-    width: 100%;
-  
-    // display: flex;
-    // justify-content: space-between;
-
-    img {
-      width: $avatar-size;
-      height: $avatar-size;
-      // border-radius: 30px;
-      // margin-right: 8px;
-      vertical-align: middle;
-    }
-
-    .card-avatar {
-      display: inline-block;
-      line-height: 60px;
-    }
-
-    .says {
-      display: inline-block;
-      position: relative; 
-      margin: 0 0 0 10px;
-      padding: 12px;
-      width: 100%;
-      height: auto;
-      max-height: 60px;
-      max-width: 90%;
-      border-radius: 12px;
-      background: #fff;    
-      font-size: 1.4rem;  
-    }
+    display: flex;
     
-    .says:after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      top: 10px; 
-      left: -20px;
-      border: 8px solid transparent;
-      border-right: 18px solid #fff;
-      -webkit-transform: rotate(35deg);
-      transform: rotate(-6deg);
+    .card-avatar {
+      text-align: center;
+      margin-right: 10px;
+      img {
+        border-radius: 30px;
+        width: $avatar-size;
+        height: $avatar-size;
+        vertical-align: middle;
+      }
+    }
+
+    .card-comment {
+      width: 100%;
+      .says {
+        position: relative;
+        padding: 8px;
+        width: 100%;
+        margin-left: 8px;
+        border-radius: 12px;
+        background: #fff;    
+        font-size: 1.4rem;  
+      }
+      
+      .says:before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 10px; 
+        left: -20px;
+        border: 8px solid transparent;
+        border-right: 18px solid #fff;
+        -webkit-transform: rotate(35deg);
+        transform: rotate(-6deg);
+      }
+    }
+  }
+  &-create_day {    
+    p {
+      text-align: right;
     }
   }
 }
