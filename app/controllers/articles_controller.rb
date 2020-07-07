@@ -1,6 +1,12 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
+    
+    # ----下記は検索フォーム用に記述----
+    @prefectures = Prefecture.all
+    @areas = Area.all
+    @q = @articles.ransack(params[:q])
+    @articles = @q.result(distinct: true)
   end
 
   def show
@@ -36,7 +42,12 @@ class ArticlesController < ApplicationController
       render :edit
     end
   end
-
+  
+  # ---------------------------------------ransack---------------------------------------
+  def search
+    @q = Article.search(search_params)
+    @articles = @q.result(distinct: true)
+  end
 
   private
   def article_params
@@ -52,5 +63,10 @@ class ArticlesController < ApplicationController
       :eyecatch,
       :auther_comment
     )
+  end
+
+  # ---------------------------------------ransack---------------------------------------
+  def search_params
+    params.require(:q).permit!
   end
 end

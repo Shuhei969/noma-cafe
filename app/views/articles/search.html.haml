@@ -1,6 +1,4 @@
 .container
-  = render 'search_form'
-
   - @articles.each do |article|
     = link_to article_path(article) do
       .card
@@ -53,11 +51,3 @@
                 %P= article.auther_comment
           .card-create_day
             %p= "投稿日：#{article.display_created_at}"
-                  
-  
-    
-
-            
-
--# - if article.auther_comment.present?
-  
