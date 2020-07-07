@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root to: 'articles#index'
   resources :articles do
     resource :like, only: [ :create, :destroy ]
+    collection do
+      get :search
+    end
   end
 
   resource :profile
