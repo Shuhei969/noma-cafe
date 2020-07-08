@@ -58,6 +58,7 @@ $container-padding: 16px;
   &_header {
     display: flex;
     justify-content: space-between;
+    position: relative;
   }
 
   &_title {
@@ -100,10 +101,10 @@ $container-padding: 16px;
     }
   }
 
-  &_heart {
+  &-heart {
     position: absolute;
-    right: 16px;
-    bottom: 16px;
+    right: 64px;
+    bottom: 6px;
 
     img {
       width: $heart-size;

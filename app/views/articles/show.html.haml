@@ -1,14 +1,21 @@
 .container
-  .article
+  .article#article-show{data: {article_id: @article.id}}
     .article_header
       %h1.article_title= @article.shop_name
-      - if user_signed_in? && current_user.has_written?(@article)
-        .article_detail_actions
-          .dropdown.article_dropdown
-            = image_tag "actions.svg", class: "dropbtn"
-            .dropdown-content.mini
-              = link_to "編集する", edit_article_path(@article)
-              = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
+      - if user_signed_in? 
+        .article-heart.hidden.active-heart
+          = image_tag 'heart-active.svg'
+          -# %span= @article.like_count
+        .article-heart.hidden.inactive-heart
+          = image_tag 'heart.svg'
+          -# %span= @article.like_count
+        - if current_user.has_written?(@article)
+          .article_detail_actions
+            .dropdown.article_dropdown
+              = image_tag "actions.svg", class: "dropbtn"
+              .dropdown-content.mini
+                = link_to "編集する", edit_article_path(@article)
+                = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
     - if @article.eyecatch.attached?
       .article_image
         = image_tag @article.eyecatch
@@ -41,4 +48,5 @@
     -#   = image_tag @article.user.profile.avatar
     -# %div
     -#   %p= @article.display_created_at
-      
+
+= javascript_pack_tag 'article'

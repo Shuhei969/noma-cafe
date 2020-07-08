@@ -1,6 +1,6 @@
 @import './variables';
 
-$heart-size: 24px;
+$heart-size: 30px;
 $avatar-size: 40px;
 $text-font-size: 1.6rem; 
 
@@ -32,6 +32,7 @@ $text-font-size: 1.6rem;
   &-header {
     display: flex;
     justify-content: space-between;
+    position: relative;
   }
 
   &-shop_name {
@@ -39,7 +40,15 @@ $text-font-size: 1.6rem;
     margin-bottom: 8px;
   }
 
+  // .card-hearts {
+  //   position: relative;
+  // }
+
   .card-heart {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+
     img {
       width: $heart-size;
       height: $heart-size;
