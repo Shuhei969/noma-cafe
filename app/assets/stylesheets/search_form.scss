@@ -1,0 +1,19 @@
+.search_form {
+  // font-size: 1.5rem;
+  border: 1px solid #838383;
+  border-radius: 4px;
+  padding: 8px 4px;
+  
+  .search_text {
+    border: 1px solid #EBEBEB;
+  }
+
+  &_submit {
+    text-align: center;
+    margin-top: 8px;
+    input {
+      padding: 0 40px;
+    }
+  }
+}
+

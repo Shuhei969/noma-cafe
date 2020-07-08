@@ -1,26 +1,22 @@
-= search_form_for(@q, url: search_articles_path) do |f|
-  %div
-    = f.label :shop_name, '店舗名'
-    = f.search_field :shop_name_cont
-    = f.label :prefecture_id, 'エリア'
-    = f.collection_select :prefecture_id_eq, @prefectures, :id, :name, :include_blank => '指定なし'
-    = f.collection_select :area_id_eq, @areas, :id, :name, :include_blank => '指定なし'
-    = f.label :address_cont, '住所'
-    = f.search_field :address_cont
-    = f.label :wifi, 'Wi-Fi'
-    = f.radio_button :wifi_eq, '', {:checked => true}
-    指定なし
-    = f.radio_button :wifi_eq, 0
-    あり
-    -# = f.radio_button :wifi_eq, 1
-    -# なし
-
-    = f.label :wifi, '電源'
-    = f.radio_button :outlet_eq, '', {:checked => true}
-    指定なし
-    = f.radio_button :outlet_eq, 0
-    あり
-    -# = f.radio_button :outlet_eq, 1
-    -# なし
-  %div
-    = f.submit "検索"
+.search_form
+  = search_form_for(@q, url: search_articles_path) do |f|
+    .search_form_field
+      = f.label :shop_name, '店舗名'
+      = f.search_field :shop_name_cont, class: 'search_text'
+      = f.label :prefecture_id, 'エリア'
+      = f.collection_select :prefecture_id_eq, @prefectures, :id, :name, :include_blank => '指定なし'
+      = f.collection_select :area_id_eq, @areas, :id, :name, :include_blank => '指定なし'
+      = f.label :address_cont, '住所'
+      = f.search_field :address_cont, class: 'search_text'
+      = f.label :wifi, 'Wi-Fi'
+      = f.radio_button :wifi_eq, '', {:checked => true}
+      指定なし
+      = f.radio_button :wifi_eq, 0
+      あり
+      = f.label :wifi, '電源'
+      = f.radio_button :outlet_eq, '', {:checked => true}
+      指定なし
+      = f.radio_button :outlet_eq, 0
+      あり
+    %div.search_form_submit
+      = f.submit "検索"

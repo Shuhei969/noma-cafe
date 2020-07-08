@@ -10,10 +10,12 @@ $container-padding: 16px;
   position: relative;
 
   &_image {
-    height: 180px;
+    width: 320px;
+    height: 320px;
     position: relative;
     overflow: hidden;
-    margin: $container-padding * -1 $container-padding * -1 16px;
+    margin-bottom: 12px;
+    // margin: $container-padding * -1 $container-padding * -1 16px;
 
     img {
       position: absolute;
@@ -25,15 +27,47 @@ $container-padding: 16px;
       width: 100%;
     }
   }
-
+  
   h2 {
     font-size: 16px;
+  }
 
+  .section-title {
+    text-align: center;
+    text-decoration-line: underline;
+    margin-bottom: 12px;
+    font-size: 24px;
+  }
+
+  &_content {
+    padding: 8px;
+    word-wrap: break-word;
+    font-size: 1.5rem;
+    border: 1px solid #838383;
+    border-radius: 4px;
+  }
+
+  .shop_info {
+    padding: 8px;
+    word-wrap: break-word;
+    font-size: 1.5rem;
+    border: 1px solid #838383;
+    border-radius: 4px;
+  }
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
   }
 
   &_title {
-    font-size: 22px;
+    font-size: 28px;
     word-wrap: break-word;
+  }
+  
+  &_dropdown {
+    line-height: 42px;
+    margin-right: 16px;
   }
 
   &_comment {
@@ -60,9 +94,10 @@ $container-padding: 16px;
     }
   }
 
-  &_content {
-    padding: 24px ;
-    word-wrap: break-word;
+  &_shop_url {
+    a {
+      color: rgb(17, 0, 255);
+    }
   }
 
   &_heart {

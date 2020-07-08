@@ -1,6 +1,44 @@
-= @article.shop_name
-= @article.prefecture.name
-= @article.area.name
-= @article.address
-- if @article.eyecatch.present?
-  = image_tag @article.eyecatch
+.container
+  .article
+    .article_header
+      %h1.article_title= @article.shop_name
+      - if user_signed_in? && current_user.has_written?(@article)
+        .article_detail_actions
+          .dropdown.article_dropdown
+            = image_tag "actions.svg", class: "dropbtn"
+            .dropdown-content.mini
+              = link_to "編集する", edit_article_path(@article)
+              = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
+    - if @article.eyecatch.attached?
+      .article_image
+        = image_tag @article.eyecatch
+    %h2.section-title
+      Author Comment
+    %p.article_content
+      =@article.content
+    .shop_info
+      %h2.section-title
+        Shop Info
+      %p.article_address
+        ="住所：#{@article.address}"
+      .article_facility
+        %p.article_facility_wifi
+          Wi-Fi：
+          - if @article.wifi == 'available_wifi'
+            あり
+          -else
+            なし
+        %p.article_facility_wifi
+          電源コンセント：
+          - if @article.outlet == 'available_outlet'   
+            あり
+          -else
+            なし
+      %p.article_shop_url
+        URL：
+        =link_to @article.shop_name, @article.shop_url
+    -# .article_detail
+    -#   = image_tag @article.user.profile.avatar
+    -# %div
+    -#   %p= @article.display_created_at
+      

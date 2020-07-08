@@ -11,25 +11,26 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
-    %header.header
-      .header_pageTitle
-        = link_to 'NOMAD CAFE', root_path
-      .header-right
-        - if user_signed_in? 
-          .div
-            = link_to '新規投稿', new_article_path, class: 'header-post'
-          .dropdown
-            - if current_user.profile.present?
-              = image_tag current_user.profile.avatar, class: 'header_avatar'
-            - else
-              = image_tag 'default-avatar.png', class: 'header_avatar'
-            .dropdown-content
-              = link_to "プロフィール",profile_path
-              = link_to "ログアウト", destroy_user_session_path,data: { method: "delete" }
-        - else
-          = link_to "ログイン", new_user_session_path, class: "header_loginBtn"
-    - if flash.present?
-      .flash
-        - flash.each do |key, value|
-          %div{:class => key}= value
+    .header-wrapper
+      %header.header
+        .header_pageTitle
+          = link_to 'Nomad-Cafe', root_path
+        .header-right
+          - if user_signed_in? 
+            .div
+              = link_to '新規投稿', new_article_path, class: 'header-post'
+            .dropdown
+              - if current_user.profile.present?
+                = image_tag current_user.profile.avatar, class: 'header_avatar'
+              - else
+                = image_tag 'default-avatar.png', class: 'header_avatar'
+              .dropdown-content
+                = link_to "プロフィール",profile_path
+                = link_to "ログアウト", destroy_user_session_path,data: { method: "delete" }
+          - else
+            = link_to "ログイン", new_user_session_path, class: "header_loginBtn"
+      - if flash.present?
+        .flash
+          - flash.each do |key, value|
+            %div{:class => key}= value
     = yield
