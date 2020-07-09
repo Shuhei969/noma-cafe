@@ -6,6 +6,8 @@
 #  address        :string
 #  auther_comment :string
 #  content        :text
+#  latitude       :float
+#  longitude      :float
 #  outlet         :integer
 #  shop_name      :string           not null
 #  shop_url       :text
@@ -35,6 +37,9 @@ class Article < ApplicationRecord
   belongs_to :prefecture
   # belongs_to :city
   belongs_to :area
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def display_created_at
     I18n.l(self.created_at, format: :default)
