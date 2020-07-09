@@ -3,7 +3,10 @@
   %p.top-title-lead available Wi-Fi & Outlet
 
 .container
-  = render 'search_form'
+  %h2#search_toggle 
+    検索 >
+  #index_search
+    = render 'search_form'
   - @articles.each do |article|
     = link_to article_path(article) do
       .card
@@ -45,4 +48,5 @@
           .card-create_day
             %p= "投稿日：#{article.display_created_at}"
 
+= javascript_pack_tag 'header'
 = javascript_pack_tag 'search_prefecture'

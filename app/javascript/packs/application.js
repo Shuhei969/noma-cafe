@@ -10,4 +10,10 @@ require("channels")
 require('jquery')
 require('axios')
 
+import $ from 'jquery'
 
+document.addEventListener('DOMContentLoaded', () => {
+  $('#search_toggle').on('click', () => {
+   $('#index_search').slideToggle(300);
+  })
+})
