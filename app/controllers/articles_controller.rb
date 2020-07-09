@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @api_key = ENV['GOOGLE_MAP_KEY']
   end
 
   def new
@@ -61,7 +62,9 @@ class ArticlesController < ApplicationController
       :content,
       :shop_url,
       :eyecatch,
-      :auther_comment
+      :auther_comment,
+      :latitude,
+      :longitude
     )
   end
 

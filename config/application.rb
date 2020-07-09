@@ -16,5 +16,8 @@ module NomaCafe
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
+
+    Bundler.require(*Rails.groups)
+    Dotenv::Railtie.load
   end
 end

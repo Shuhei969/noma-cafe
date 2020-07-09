@@ -6,6 +6,8 @@
 #  address        :string
 #  auther_comment :string
 #  content        :text
+#  latitude       :float
+#  longitude      :float
 #  outlet         :integer
 #  shop_name      :string           not null
 #  shop_url       :text

@@ -27,7 +27,9 @@
       %h2.section-title
         Shop Info
       %p.article_address
-        ="住所：#{@article.address}"
+        ="住所："
+      #address{:value => "#{@article.address}"}
+        = @article.address
       .article_facility
         %p.article_facility_wifi
           Wi-Fi：
@@ -44,9 +46,39 @@
       %p.article_shop_url
         URL：
         =link_to @article.shop_name, @article.shop_url
+      #map
     -# .article_detail
     -#   = image_tag @article.user.profile.avatar
     -# %div
     -#   %p= @article.display_created_at
 
+:javascript
+  let map
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+  
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 40.7828, lng:-73.9653},
+      zoom: 14,
+    });
+  
+    marker = new google.maps.Marker({
+      position:  {lat: 40.7828, lng:-73.9653},
+      map: map
+    });
+    let inputAddress = document.getElementById('address').innerText;
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });   
+  }
+  
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{@api_key}&callback=initMap"}
 = javascript_pack_tag 'article'
