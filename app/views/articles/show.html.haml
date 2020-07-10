@@ -18,7 +18,7 @@
                 = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
     - if @article.eyecatch.attached?
       .article_image
-        = image_tag @article.eyecatch
+        = image_tag @article.eyecatch.variant(resize_to_fill: [300, 300])
     %h2.section-title
       Author Comment
     %p.article_content
