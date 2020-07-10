@@ -36,6 +36,8 @@ class ArticlesController < ApplicationController
 
   def update
     @article = current_user.articles.find(params[:id])
+    # 画像関連
+    # @article.eyecatchs.detach
     if @article.update(article_params)
       redirect_to article_path(@article), notice: '更新できました'
     else
@@ -43,6 +45,14 @@ class ArticlesController < ApplicationController
       render :edit
     end
   end
+
+  # def upload_eyecatch
+  #   @eyecatch_blob = create_blob(params[:eyecatch])
+  #   respond_to do |format|
+  #     format.json { @eyecatch_blob }
+  #   end
+
+
   
   # ---------------------------------------ransack---------------------------------------
   def search
@@ -61,15 +71,33 @@ class ArticlesController < ApplicationController
       :outlet,
       :content,
       :shop_url,
-      :eyecatch,
       :auther_comment,
       :latitude,
-      :longitude
+      :longitude,
+      eyecatchs: []
     )
   end
+end
+  
+  # def uploaded_eyecatchs
+  #   params[:article][:eyecatchs].map{|id| ActiveStorage::Blob.find(id)} if params[:article][:eyecatchs]
+  # end
+
+  # def set_article
+  #   @article = Article.with_attached_eyecatchs.find(params[:id])
+  # end
+
+
+  # def create_blob(uploading_file)
+  #   ActiveStorage::Blob.create_after_upload! \
+  #     io: uploading_file.open,
+  #     filename: uploading_file.original_filename,
+  #     content_type: uploading_file.content_type
+  # end
+
 
   # ---------------------------------------ransack---------------------------------------
   def search_params
     params.require(:q).permit!
   end
-end
+

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :like, only: [ :create, :destroy, :show ]
     collection do
       get :search
+      post :upload_eyecatch
     end
   end
 

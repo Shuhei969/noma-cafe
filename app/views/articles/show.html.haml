@@ -16,9 +16,10 @@
               .dropdown-content.mini
                 = link_to "編集する", edit_article_path(@article)
                 = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
-    - if @article.eyecatch.attached?
+    - if @article.eyecatchs.attached?
       .article_image
-        = image_tag @article.eyecatch.variant(resize_to_fill: [300, 300])
+        - @article.eyecatchs.each do |eyecatch|
+          = image_tag eyecatch.variant(resize_to_fill: [200, 200])
     %h2.section-title
       Author Comment
     %p.article_content

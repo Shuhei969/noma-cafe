@@ -11,8 +11,9 @@
     = link_to article_path(article) do
       .card
         .card-image
-          - if article.eyecatch.present?
-            = image_tag article.eyecatch.variant(resize_to_fill: [200, 200])
+          - if article.eyecatchs.present?
+            - article.eyecatchs.each do |eyecatch|
+              = image_tag eyecatch.variant(resize_to_fill: [200, 200])
           - else
             = image_tag 'no-image.png'
         .card-content

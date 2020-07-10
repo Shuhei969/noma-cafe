@@ -4,10 +4,11 @@
       %li= message
 
   = form_with(model: article, local: true) do |f|
-    %div
-      = f.label :eyecatch, 'アイキャッチ画像：'
-    %div 
-      = f.file_field :eyecatch
+    .eyecatchs_field
+      .field
+        = f.label :eyecatchs ,'イメージ画像'
+        = f.file_field :eyecatchs ,multiple: true, class: 'file-input'
+      .image_area
     %div
       = f.label :shop_name, '店舗名：'
     %div 
@@ -54,3 +55,4 @@
       = f.submit "保存", class: 'btn-primary'
 
 = javascript_pack_tag 'prefecture'
+= javascript_pack_tag 'eyecatch'
