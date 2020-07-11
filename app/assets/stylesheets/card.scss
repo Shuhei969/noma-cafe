@@ -23,6 +23,27 @@ $text-font-size: 1.6rem;
       // width: 100%;
       // height: auto;
     }
+
+    .card-main-eyecatch {
+      width: 80%;
+      margin: 0 auto;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .card-eyecatch-list {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      // justify-content: space-around;
+      img {
+        width: 32%;
+        height: auto;
+        margin-right: 3px;
+      }
+    }
   }
 
   &-content {

@@ -15,6 +15,7 @@ axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 // const imagePath = (name) => images(name, true)
 
 
+// article/showのいいねボタンを非同期化
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = $(`#article-show`).data()
   const articleId = dataset.articleId
@@ -40,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(e)
       })
   })
-
   $('.active-heart').on('click', () => {
     axios.delete(`/articles/${articleId}/like`)
       .then((response) => {
@@ -55,3 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
       })
   })
 })
+
+
+// article/show内の画像をクリックで切り替え
+$(function(){
+  $('.eyecatch-list img').click(function(){
+    
+    $.subId = $(this).parent().attr('data-sub-image-id')
+    $.mainImage = $("[data-image-id=" + $.subId + "]")
+    $.mainImage.attr('src' , $(this).attr('src'));
+  });
+});

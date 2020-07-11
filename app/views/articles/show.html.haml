@@ -5,10 +5,8 @@
       - if user_signed_in? 
         .article-heart.hidden.active-heart
           = image_tag 'heart-active.svg'
-          -# %span= @article.like_count
         .article-heart.hidden.inactive-heart
           = image_tag 'heart.svg'
-          -# %span= @article.like_count
         - if current_user.has_written?(@article)
           .article_detail_actions
             .dropdown.article_dropdown
@@ -18,8 +16,12 @@
                 = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
     - if @article.eyecatchs.attached?
       .article_image
-        - @article.eyecatchs.each do |eyecatch|
-          = image_tag eyecatch.variant(resize_to_fill: [200, 200])
+        - if @article.eyecatchs.present?
+          .main_image{data: {main_image_id: @article.id}}
+            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [130, 130]), {data: {image_id: @article.id}}
+          .eyecatch-list{data: {sub_image_id: @article.id}}
+            - @article.eyecatchs.each do |eyecatch|
+              = image_tag eyecatch.variant(resize_to_fill: [130, 130])
     %h2.section-title
       Author Comment
     %p.article_content

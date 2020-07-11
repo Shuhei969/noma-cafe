@@ -5,7 +5,7 @@ $header-padding-y: 12px;
 $back-icon-size: 16px;
 
 .header-wrapper {
-  display: none;
+  // display: none;
 }
 
 .header {
@@ -15,8 +15,8 @@ $back-icon-size: 16px;
     padding: 12px;
     font-weight: bold;
     border-bottom: 3px solid #f2f2f2;
-    position: fixed;
-    z-index: 2;
+    // position: fixed;
+    // z-index: 2;
     width: 100%;
   
     a {
