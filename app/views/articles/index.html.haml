@@ -8,14 +8,17 @@
   #index_search
     = render 'search_form'
   - @articles.each do |article|
-    = link_to article_path(article) do
-      .card
-        .card-image
-          - if article.eyecatchs.present?
+    .card
+      .card-image
+        - if article.eyecatchs.present?
+          .card-main-eyecatch#card-main_image{data: {main_image_id: article.id}}
+            = image_tag article.eyecatchs[0].variant(resize_to_fill: [130, 130]), {data: {image_id: article.id}}
+          .card-eyecatch-list#card-sub_image{data: {sub_image_id: article.id}}
             - article.eyecatchs.each do |eyecatch|
-              = image_tag eyecatch.variant(resize_to_fill: [200, 200])
-          - else
-            = image_tag 'no-image.png'
+              = image_tag eyecatch.variant(resize_to_fill: [130, 130])
+        - else
+          = image_tag 'no-image.png'
+      = link_to article_path(article) do
         .card-content
           .card-header
             .card-shop_name
