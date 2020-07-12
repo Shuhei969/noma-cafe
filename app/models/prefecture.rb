@@ -10,5 +10,5 @@
 class Prefecture < ApplicationRecord
   # has_many :cities
   has_many :areas
-  has_many :articles
+  # has_many :articles
 end

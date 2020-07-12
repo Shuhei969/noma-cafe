@@ -1,26 +1,26 @@
-$(document).on('DOMContentLoaded', function() {
+// $(document).on('DOMContentLoaded', function() {
 
-  let prefectureVal = $('#q_prefecture_id_eq').val();
-  if (prefectureVal !== "") {
-    let selectedTemplate = $(`#area-of-prefecture${prefectureVal}`);
-    $('#q_area_id_eq').remove();
-    $('#q_prefecture_id_eq').after(selectedTemplate.html());
-  };
+//   let prefectureVal = $('#q_prefecture_id_eq').val();
+//   if (prefectureVal !== "") {
+//     let selectedTemplate = $(`#area-of-prefecture${prefectureVal}`);
+//     $('#q_area_id_eq').remove();
+//     $('#q_prefecture_id_eq').after(selectedTemplate.html());
+//   };
 
-  let defaultAreaSelect = `<select name="area" id="q_area_id_eq"><option value>---</option></select>`;
+//   let defaultAreaSelect = `<select name="area" id="q_area_id_eq"><option value>---</option></select>`;
 
-  $(document).on('change', '#q_prefecture_id_eq', function() {
-   let prefectureVal = $('#q_prefecture_id_eq').val();
-   if (prefectureVal !== "") {
-    let selectedTemplate = $(`#area-of-prefecture${prefectureVal}`);
-    $('#q_area_id_eq').remove();
-    $('#q_prefecture_id_eq').after(selectedTemplate.html());
-   } else {
-    $('#q_area_id_eq').remove();
-    $('#q_prefecture_id_eq').after(defaultAreaSelect);
-   };
- });
-});
+//   $(document).on('change', '#q_prefecture_id_eq', function() {
+//    let prefectureVal = $('#q_prefecture_id_eq').val();
+//    if (prefectureVal !== "") {
+//     let selectedTemplate = $(`#area-of-prefecture${prefectureVal}`);
+//     $('#q_area_id_eq').remove();
+//     $('#q_prefecture_id_eq').after(selectedTemplate.html());
+//    } else {
+//     $('#q_area_id_eq').remove();
+//     $('#q_prefecture_id_eq').after(defaultAreaSelect);
+//    };
+//  });
+// });
 
 // $(document).on('DOMContentLoaded', function() {
 

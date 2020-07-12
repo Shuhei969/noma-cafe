@@ -2,7 +2,7 @@
 
 $heart-size: 30px;
 $avatar-size: 40px;
-$text-font-size: 1.6rem; 
+$text-font-size: 2rem; 
 
 
 .card {
@@ -17,19 +17,15 @@ $text-font-size: 1.6rem;
     width: 100%;
     max-width: 200px;
     max-height: 200px;
-    margin-right: 10px;
-    
-    img {
-      // width: 100%;
-      // height: auto;
-    }
-
+  
     .card-main-eyecatch {
       width: 80%;
       margin: 0 auto;
+      
       img {
         width: 100%;
         height: auto;
+        border-radius: 6px;
       }
     }
 
@@ -37,23 +33,24 @@ $text-font-size: 1.6rem;
       width: 80%;
       margin: 0 auto;
       display: flex;
-      // justify-content: space-around;
+
       img {
-        width: 32%;
+        width: 30%;
         height: auto;
-        margin-right: 3px;
+        margin-right: 8px;
+        border-radius: 6px;
       }
     }
   }
 
   &-content {
-    width: 100%;
+    width: 800px;
   }
 
   &-header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    position: relative;
   }
 
   &-shop_name {
@@ -61,26 +58,17 @@ $text-font-size: 1.6rem;
     margin-bottom: 8px;
   }
 
-  // .card-hearts {
-  //   position: relative;
-  // }
-
-  .card-heart {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-
-    img {
-      width: $heart-size;
-      height: $heart-size;
-    }
+  &-like {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    span {
+      display: inline-block;
+      line-height: 44px;
+      font-size: 1.8rem;
+    } 
   }
 
-  &-shop_area {
-    font-size: $text-font-size;
-    margin-bottom: 4px;
-  }
-  
   &-shop_address {
     font-size: $text-font-size;
     margin-bottom: 4px;

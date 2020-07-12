@@ -1,30 +1,21 @@
-.container.profilePage
-  .profilePage_user
-    .profilePage_user_image
-      = image_tag current_user.profile.avatar
-    .profilePage_user_basicInfo
-      .profilePage_user_name
-        .profilePage_user_displayName
-          #{current_user.profile.nickname} (#{I18n.t("enum.genders.#{current_user.profile.gender || 'unknown'}")})
-        .profilePage_user_actionButton
-          = link_to 'Edit', edit_profile_path          
-      .profilePage_user_introduction
-        = current_user.profile&.introduction
-  %h2 投稿一覧
-  - current_user.articles.each do |article|
-    = link_to article_path(article) do
-      .card
-        - if article.eyecatch.attached?
-          .card_image
-            = image_tag article.eyecatch
-        .card_content
-          .card-title
-            %h2= article.shop_name
-          -# .card_heart
-          -#   = image_tag 'heart.svg'
-          -#   %span= article.likes_count
-          .card_detail
-            = image_tag article.user.profile.avatar
-            %div
-              %p= article.user.profile.nickname
-              %p= article.display_created_at
+.container
+  .profilePage
+    .profilePage_user
+      .profilePage_user_image
+        = image_tag current_user.profile.avatar.variant(resize_to_fill: [300, 300])
+      .profilePage_user_basicInfo
+        .profilePage_user_header
+          .profilePage_user_name
+            =current_user.profile.nickname
+          .profilePage_user_actionButton
+            = link_to 'Edit', edit_profile_path            
+        .profilePage_user_introduction
+          = current_user.profile&.introduction
+    
+    %h2.section-title
+      投稿記事一覧
+    
+    - current_user.articles.each do |article|
+      = render 'articles/article', article: article
+
+= javascript_pack_tag 'header'
