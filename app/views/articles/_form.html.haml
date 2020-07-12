@@ -5,54 +5,51 @@
 
   = form_with(model: article, local: true) do |f|
     .eyecatchs_field
-      .field
-        = f.label :eyecatchs ,'イメージ画像'
+      %div
+        = f.label :eyecatchs ,'画像：'
         = f.file_field :eyecatchs ,multiple: true, class: 'file-input'
+        .fas.fa-exclamation-circle.fa-2x
+        %span 最大3枚まで
       .image_area
+      /選択画像プレビュー用
+
     %div
-      = f.label :shop_name, '店舗名：'
+      = f.label :shop_name, '店舗名'
+      .must
+        %span 必須
     %div 
-      = f.text_field :shop_name, class: 'text'
-    %div
-      = f.label :prefecture, 'エリア'
-    %div
-      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "所在地を選択してください"
-      = f.select :area_id, [], include_blank: "---", class: "default-city-select"
-      - Prefecture.all.each do |prefecture|
-        %template{id: "area-of-prefecture#{prefecture.id}"}
-          = f.collection_select :area_id, prefecture.areas, :id, :name
+      = f.text_field :shop_name, class: 'text', placeholder: 'スターバックスコーヒー 〇〇店 ....etc'
     %div
       = f.label :addreses, '住所'
+      .must
+        %span 必須
     %div
-      = f.text_field :address, class: 'text'
+      = f.text_field :address, class: 'text', placeholder: '東京都新宿区1-1-1 ....etc'
     %div
       = f.label :wifi, 'Wi-Fi'
     %div
       = f.radio_button :wifi, :available_wifi, checked: true
-      = f.label :wifi, 'あり'
+      %span あり
+      -# = f.label :wifi, 'あり'
       = f.radio_button :wifi, :disavailable_wifi
-      = f.label :wifi, 'なし'
+      -# = f.label :wifi, 'なし'
+      %span なし
     %div
       = f.label :outlet, '電源コンセント'
     %div
       = f.radio_button :outlet, :available_outlet, checked: true
-      = f.label :outlet, 'あり'
+      %span あり
       = f.radio_button :outlet, :disavailable_outlet
-      = f.label :outlet, 'なし'
+      %span なし
     %div
-      = f.label :auther_comment, 'ひとことコメント'
+      = f.label :auther_comment, 'コメント'
     %div
-      = f.text_field :auther_comment, class: 'text'
-    %div
-      = f.label :content, 'メモ'
-    %div
-      = f.text_area :content, class: 'textarea'
+      = f.text_field :auther_comment, class: 'text', placeholder: '混み具合、店内の雰囲気 ....etc'
     %div
       = f.label :shop_url, 'URL'
     %div
-      = f.text_field :shop_url, class: 'text'
+      = f.text_field :shop_url, class: 'text', placeholder: '店舗ホームページなど'
     %div 
       = f.submit "保存", class: 'btn-primary'
 
-= javascript_pack_tag 'prefecture'
 = javascript_pack_tag 'eyecatch'

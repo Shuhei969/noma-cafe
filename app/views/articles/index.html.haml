@@ -3,54 +3,14 @@
   %p.top-title-lead available Wi-Fi & Outlet
 
 .container
+  -# 検索フォーム
   %h2#search_toggle 
-    検索 >
+    .fas.fa-search-plus
+    検索(←click!!)
   #index_search
     = render 'search_form'
-  - @articles.each do |article|
-    .card
-      .card-image
-        - if article.eyecatchs.present?
-          .card-main-eyecatch#card-main_image{data: {main_image_id: article.id}}
-            = image_tag article.eyecatchs[0].variant(resize_to_fill: [130, 130]), {data: {image_id: article.id}}
-          .card-eyecatch-list#card-sub_image{data: {sub_image_id: article.id}}
-            - article.eyecatchs.each do |eyecatch|
-              = image_tag eyecatch.variant(resize_to_fill: [130, 130])
-        - else
-          = image_tag 'no-image.png'
-      = link_to article_path(article) do
-        .card-content
-          .card-header
-            .card-shop_name
-              %h2= article.shop_name
-            .card-heart
-              -# = link_to article_like_path(article), data: { method: 'post' } do
-              = image_tag 'heart.svg'
-              %span= article.like_count
-          .card-shop_area
-            = "エリア：#{article.prefecture.name}"
-            %span= article.area.name 
-          .card-shop_address
-            %p= "住所：#{article.address}"
-          .card-shop_facility
-            - if article.wifi == 'available_wifi'
-              .wifi-icon
-                #{I18n.t("enum.wifi.#{article.wifi}")}
-            - if article.outlet == 'available_outlet'   
-              .outlet-icon 
-                #{I18n.t("enum.outlet.#{article.outlet}")}
-          .card-detail
-            .card-avatar
-              -if article.user.profile.present?
-                = image_tag article.user.profile.avatar
-              - else
-                = image_tag 'default-avatar.png' 
-              %p= article.user.display_name
-            .card-comment 
-              .says
-                %P= article.auther_comment
-          .card-create_day
-            %p= "投稿日：#{article.display_created_at}"
+  
+  -# 記事一覧
+  = render 'articles', articles: @articles
 
 = javascript_pack_tag 'header'
-= javascript_pack_tag 'search_prefecture'

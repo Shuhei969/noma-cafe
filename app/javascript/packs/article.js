@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // article/show内の画像をクリックで切り替え
 $(function(){
-  $('.eyecatch-list img').click(function(){
+  $('.article-image-sub img').click(function(){
     
     $.subId = $(this).parent().attr('data-sub-image-id')
     $.mainImage = $("[data-image-id=" + $.subId + "]")

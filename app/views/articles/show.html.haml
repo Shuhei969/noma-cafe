@@ -1,38 +1,45 @@
 .container
   .article#article-show{data: {article_id: @article.id}}
-    .article_header
-      %h1.article_title= @article.shop_name
-      - if user_signed_in? 
-        .article-heart.hidden.active-heart
-          = image_tag 'heart-active.svg'
-        .article-heart.hidden.inactive-heart
-          = image_tag 'heart.svg'
-        - if current_user.has_written?(@article)
-          .article_detail_actions
-            .dropdown.article_dropdown
-              = image_tag "actions.svg", class: "dropbtn"
-              .dropdown-content.mini
-                = link_to "編集する", edit_article_path(@article)
-                = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
+    .article-header
+      %h1.article-title= @article.shop_name
+      .article-detail
+        - if user_signed_in? 
+          .article-heart.hidden.active-heart
+            = image_tag 'heart-active.svg'
+          .article-heart.hidden.inactive-heart
+            = image_tag 'heart.svg'
+            %span Like
+          - if current_user.has_written?(@article)
+            .detail_actions
+              .dropdown.article-dropdown
+                = image_tag "actions.svg", class: "dropbtn"
+                .dropdown-content.mini
+                  = link_to "編集する", edit_article_path(@article)
+                  -# = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
+                  = button_to "削除する", article_path(@article), method: :delete,data: {confirm: "本当に削除してよろしいですか？"},class: 'delete-btn'
+    /イメージ画像
     - if @article.eyecatchs.attached?
-      .article_image
+      .article-image
         - if @article.eyecatchs.present?
-          .main_image{data: {main_image_id: @article.id}}
-            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [130, 130]), {data: {image_id: @article.id}}
-          .eyecatch-list{data: {sub_image_id: @article.id}}
+          .article-image-sub{data: {sub_image_id: @article.id}}
             - @article.eyecatchs.each do |eyecatch|
-              = image_tag eyecatch.variant(resize_to_fill: [130, 130])
-    %h2.section-title
-      Author Comment
-    %p.article_content
-      =@article.content
+              = image_tag eyecatch.variant(resize_to_fill: [550, 550])
+          .article-image-main{data: {main_image_id: @article.id}}
+            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [550, 550]), {data: {image_id: @article.id}}
+    
+    -# %h2.section-title
+    -#   Author Comment
+    -# %p.article_content
+    -#   =@article.content
     .shop_info
       %h2.section-title
         Shop Info
-      %p.article_address
-        ="住所："
-      #address{:value => "#{@article.address}"}
-        = @article.address
+      .article-shop_name
+        ="店舗名：#{@article.shop_name}"
+      .article-address
+        住所：
+        #address{:value => "#{@article.address}"}
+          = @article.address
       .article_facility
         %p.article_facility_wifi
           Wi-Fi：
@@ -46,14 +53,11 @@
             あり
           -else
             なし
-      %p.article_shop_url
-        URL：
-        =link_to @article.shop_name, @article.shop_url
+      -if @article.shop_url.present? || @article.shop_url != ""
+        %p.article_shop_url
+          URL：
+          =link_to @article.shop_name, @article.shop_url
       #map
-    -# .article_detail
-    -#   = image_tag @article.user.profile.avatar
-    -# %div
-    -#   %p= @article.display_created_at
 
 :javascript
   let map

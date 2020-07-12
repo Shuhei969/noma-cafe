@@ -24,5 +24,4 @@ $(document).on('DOMContentLoaded', function() {
       reader.readAsDataURL(imageFile);
       return def.promise();
     }
-  
 })

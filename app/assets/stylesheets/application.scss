@@ -9,6 +9,8 @@
 @import 'profile';
 @import 'search_form';
 @import 'top';
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
  html {
   word-spacing: 1px;
@@ -46,6 +48,13 @@ a {
   color: #000;
 }
 
+.section-title {
+  text-align: center;
+  text-decoration-line: underline;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+
 .float_btn {
   position: fixed;
   bottom: 16px;
@@ -65,4 +74,15 @@ a {
 
 .hidden {
   display: none;
+}
+
+.icons {
+  padding:  10px;
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.icon {
+  color: pink;
+  margin:  10px;
 }

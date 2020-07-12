@@ -1,0 +1,43 @@
+.card
+  .card-image
+    - if article.eyecatchs.present?
+      .card-main-eyecatch{data: {main_image_id: article.id}}
+        = image_tag article.eyecatchs[0].variant(resize_to_fill: [130, 130]), {data: {image_id: article.id}}
+      .card-eyecatch-list{data: {sub_image_id: article.id}}
+        - article.eyecatchs.each do |eyecatch|
+          = image_tag eyecatch.variant(resize_to_fill: [130, 130])
+    - else
+      = image_tag 'no-image.png'
+
+  = link_to article_path(article) do
+    .card-content
+      .card-header
+        .card-shop_name
+          %h2= article.shop_name
+        .card-like
+          .fas.fa-heart.fa-2x
+          %span= "#{article.like_count}" 
+      .card-shop_address
+        %p= "住所：#{article.address}"
+      .card-shop_facility
+        - if article.wifi == 'available_wifi'
+          .wifi-icon
+            .fas.fa-wifi
+            #{I18n.t("enum.wifi.#{article.wifi}")}
+        - if article.outlet == 'available_outlet'   
+          .outlet-icon 
+            .fas.fa-plug
+            #{I18n.t("enum.outlet.#{article.outlet}")}
+      .card-detail
+        .card-avatar
+          -if article.user.profile.present?
+            = image_tag article.user.profile.avatar
+          - else
+            = image_tag 'default-avatar.png' 
+          %p= article.user.display_name
+        -if article.auther_comment.present? || article.auther_comment != ""
+          .card-comment 
+            .says
+              %P= article.auther_comment
+      .card-create_day
+        %p= "投稿日：#{article.display_created_at}"

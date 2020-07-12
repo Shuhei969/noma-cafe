@@ -1,10 +1,9 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
-    
+    @articles = Article.all.order(id: 'DESC')
     # ----下記は検索フォーム用に記述----
-    @prefectures = Prefecture.all
-    @areas = Area.all
+    # @prefectures = Prefecture.all
+    # @areas = Area.all
     @q = @articles.ransack(params[:q])
     @articles = @q.result(distinct: true)
   end
@@ -46,14 +45,14 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # def upload_eyecatch
-  #   @eyecatch_blob = create_blob(params[:eyecatch])
-  #   respond_to do |format|
-  #     format.json { @eyecatch_blob }
-  #   end
-
+  def destroy
+    article = current_user.articles.find(params[:id])
+    article.destroy!
+    redirect_to root_path, notice: '削除に成功しました'
+  end
 
   
+
   # ---------------------------------------ransack---------------------------------------
   def search
     @q = Article.search(search_params)
@@ -64,8 +63,6 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(
       :shop_name,
-      :prefecture_id,
-      :area_id,
       :address,
       :wifi,
       :outlet,
@@ -78,24 +75,6 @@ class ArticlesController < ApplicationController
     )
   end
 end
-  
-  # def uploaded_eyecatchs
-  #   params[:article][:eyecatchs].map{|id| ActiveStorage::Blob.find(id)} if params[:article][:eyecatchs]
-  # end
-
-  # def set_article
-  #   @article = Article.with_attached_eyecatchs.find(params[:id])
-  # end
-
-
-  # def create_blob(uploading_file)
-  #   ActiveStorage::Blob.create_after_upload! \
-  #     io: uploading_file.open,
-  #     filename: uploading_file.original_filename,
-  #     content_type: uploading_file.content_type
-  # end
-
-
   # ---------------------------------------ransack---------------------------------------
   def search_params
     params.require(:q).permit!
