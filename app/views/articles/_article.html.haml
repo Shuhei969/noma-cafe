@@ -2,10 +2,10 @@
   .card-image
     - if article.eyecatchs.present?
       .card-main-eyecatch{data: {main_image_id: article.id}}
-        = image_tag article.eyecatchs[0].variant(resize_to_fill: [130, 130]), {data: {image_id: article.id}}
+        = image_tag article.eyecatchs[0].variant(resize_to_fill: [700, 700]), {data: {image_id: article.id}}
       .card-eyecatch-list{data: {sub_image_id: article.id}}
         - article.eyecatchs.each do |eyecatch|
-          = image_tag eyecatch.variant(resize_to_fill: [130, 130])
+          = image_tag eyecatch.variant(resize_to_fill: [700, 700])
     - else
       = image_tag 'no-image.png'
 
@@ -17,6 +17,8 @@
         .card-like
           .fas.fa-heart.fa-2x
           %span= "#{article.like_count}" 
+          .fas.fa-comment-dots.fa-2x
+          %span= "#{article.comment_count}" 
       .card-shop_address
         %p= "住所：#{article.address}"
       .card-shop_facility

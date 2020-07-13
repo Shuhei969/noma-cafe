@@ -8,7 +8,7 @@
             = image_tag 'heart-active.svg'
           .article-heart.hidden.inactive-heart
             = image_tag 'heart.svg'
-            %span Like
+            %span Like!
           - if current_user.has_written?(@article)
             .detail_actions
               .dropdown.article-dropdown
@@ -23,14 +23,10 @@
         - if @article.eyecatchs.present?
           .article-image-sub{data: {sub_image_id: @article.id}}
             - @article.eyecatchs.each do |eyecatch|
-              = image_tag eyecatch.variant(resize_to_fill: [550, 550])
+              = image_tag eyecatch.variant(resize_to_fill: [900, 900])
           .article-image-main{data: {main_image_id: @article.id}}
-            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [550, 550]), {data: {image_id: @article.id}}
-    
-    -# %h2.section-title
-    -#   Author Comment
-    -# %p.article_content
-    -#   =@article.content
+            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [900, 900]), {data: {image_id: @article.id}}
+    /店舗情報
     .shop_info
       %h2.section-title
         Shop Info
@@ -69,8 +65,9 @@
             %p.comment-name
               = comment.user.display_name
             %p= comment.content
-      = link_to 'コメントを作成',new_article_comment_path(@article)
+      = link_to 'コメントを作成',new_article_comment_path(@article), class:'btn-primary'
 
+-# GoogleMAP(画像は#mapに表示される)
 :javascript
   let map
   function initMap(){

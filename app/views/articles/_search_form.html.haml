@@ -12,7 +12,7 @@
       -#   %template{id: "area-of-prefecture#{prefecture.id}"}
       -#     = f.collection_select :area_id_eq, prefecture.areas, :id, :name, include_blank: "指定なし"
       = f.label :shop_name_or_address_cont_any, 'キーワード検索'
-      = f.search_field :shop_name_or_address_cont_any, class: 'search_text'
+      = f.search_field :shop_name_or_address_cont_any, class: 'search_text', placeholder: '店舗名,地名 etc....'
       = f.label :wifi, 'Wi-Fi'
       = f.radio_button :wifi_eq, '', {:checked => true}
       指定なし

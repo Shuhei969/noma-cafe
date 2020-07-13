@@ -1,6 +1,6 @@
 @import './variables';
-$heart-size: 32px;
-$avatar-size: 32px;
+$heart-size: 40px;
+$avatar-size: 40px;
 $container-padding: 16px;
 
 
@@ -65,18 +65,19 @@ $container-padding: 16px;
 
   &-heart {
     position: relative;
-    // right: 64px;
-    // bottom: 6px;
+
     img {
       width: $heart-size;
       height: $heart-size;
     }
+
     span {
       position: absolute;
-      top: 6px;
+      top: 8px;
       right: 21px;
       font-size: 1rem;
-      color: #838383;
+      color: #0a0025;
+      font-weight: bold;
     }
   }
 
@@ -96,7 +97,6 @@ $container-padding: 16px;
   &-image {
     display: flex;
     width: 800px;
-    // height: 600px;
     position: relative;
     overflow: hidden;
     margin: 10px auto;
@@ -146,6 +146,7 @@ $container-padding: 16px;
 .comment-box {
   padding: 6px 0;
   display: flex;
+  margin-bottom: 12px;
   border-bottom: 1px solid #838383;
   .comment-avatar {
     
@@ -173,5 +174,5 @@ $container-padding: 16px;
 #map {
   height: 300px;
   width: 100%;
-  margin: 12px 0;
+  margin: 24px 0;
 }
