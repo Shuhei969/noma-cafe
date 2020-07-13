@@ -69,6 +69,14 @@ $back-icon-size: 16px;
       }
     }
 
+    .guest {
+      cursor: pointer;
+      background-color: #ffffff;
+      border: 1px solid #616161;
+      // color: #616161;
+     
+    }
+
 
     &_avatar {
       width: $avatar-size;
