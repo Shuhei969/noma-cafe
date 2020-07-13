@@ -24,7 +24,7 @@
             .article-post
               = link_to '新規投稿', new_article_path, class: 'header-post'
             .dropdown
-              - if current_user.profile.present?
+              - if current_user.profile.avatar.present? || current_user.profile.avatar != 'nil'
                 = image_tag current_user.profile.avatar, class: 'header_avatar'
               - else
                 = image_tag 'default-avatar.png', class: 'header_avatar'
@@ -33,6 +33,7 @@
                 = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'logout-btn'
           - else
             = link_to "ログイン", new_user_session_path, class: "header-loginBtn"
+            = button_to '簡単ログイン', users_guest_sign_in_path, method: :post, class: "header-loginBtn guest"
     .header-padding
     - if flash.present?
       .flash
