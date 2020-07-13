@@ -25,12 +25,12 @@ class Article < ApplicationRecord
 
   enum wifi: { available_wifi: 0, disavailable_wifi: 1 }
   enum outlet: { available_outlet: 0, disavailable_outlet: 1 }
+
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many_attached :eyecatchs, dependent: :destroy
   belongs_to :user
-  # belongs_to :prefecture
-  # belongs_to :city
-  # belongs_to :area
+
   validates :shop_name, presence: true
   validates :address, presence: true
 
@@ -45,11 +45,7 @@ class Article < ApplicationRecord
     likes.count
   end
 
-  # def eyecatch_count_validation
-  #   eyecatch_validation = eyecatchs #validatesの時と違って、:tag_listとしないところを注意
-  #   eyecatch_validation.split(",")
-  #   if eyecatch_validation.length >3
-  #     errors.add(:eyecatchs, "画像は３個までです")
-  #   end
-  # end
+  def comment_count
+    comments.count
+  end
 end

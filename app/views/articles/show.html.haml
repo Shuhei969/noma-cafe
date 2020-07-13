@@ -8,7 +8,7 @@
             = image_tag 'heart-active.svg'
           .article-heart.hidden.inactive-heart
             = image_tag 'heart.svg'
-            %span Like
+            %span Like!
           - if current_user.has_written?(@article)
             .detail_actions
               .dropdown.article-dropdown
@@ -23,14 +23,10 @@
         - if @article.eyecatchs.present?
           .article-image-sub{data: {sub_image_id: @article.id}}
             - @article.eyecatchs.each do |eyecatch|
-              = image_tag eyecatch.variant(resize_to_fill: [550, 550])
+              = image_tag eyecatch.variant(resize_to_fill: [900, 900])
           .article-image-main{data: {main_image_id: @article.id}}
-            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [550, 550]), {data: {image_id: @article.id}}
-    
-    -# %h2.section-title
-    -#   Author Comment
-    -# %p.article_content
-    -#   =@article.content
+            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [900, 900]), {data: {image_id: @article.id}}
+    /店舗情報
     .shop_info
       %h2.section-title
         Shop Info
@@ -59,6 +55,19 @@
           =link_to @article.shop_name, @article.shop_url
       #map
 
+      -# コメント一覧
+      %h2.section-title Comments
+      - @comments.each do |comment|  
+        .comment-box
+          .comment-avatar
+            = image_tag comment.user.profile.avatar
+          .comment-text
+            %p.comment-name
+              = comment.user.display_name
+            %p= comment.content
+      = link_to 'コメントを作成',new_article_comment_path(@article), class:'btn-primary'
+
+-# GoogleMAP(画像は#mapに表示される)
 :javascript
   let map
   function initMap(){
@@ -81,11 +90,7 @@
       mapError.style.display = "none";
       //alert('該当する結果がありませんでした：' + status);
     }
-    });   
-    //marker = new google.maps.Marker({
-    //position:  {lat: 40.7828, lng:-73.9653},
-    //map: map
-    //});
+    });
   }
   
 %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{@api_key}&callback=initMap"}

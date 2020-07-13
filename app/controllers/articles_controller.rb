@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @api_key = ENV['GOOGLE_MAP_KEY']
+    @comments = @article.comments
   end
 
   def new
