@@ -20,6 +20,8 @@
         .header-right
           - if user_signed_in? 
             .article-post
+              = link_to 'お気に入り', favorites_path, class: 'header-post'
+            .article-post
               = link_to '新規投稿', new_article_path, class: 'header-post'
             .dropdown
               - if current_user.profile.present?
