@@ -1,0 +1,5 @@
+.container
+  .section-title
+    お気に入り一覧
+  - @articles.each do |article|
+    = render 'articles/article', article: article
