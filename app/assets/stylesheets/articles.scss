@@ -136,23 +136,38 @@ $container-padding: 16px;
     }
   }
 
-  
-  
-
-  &_comment {
-    padding: 12px 0;
-  }
-
-  
-
   &_shop_url {
     a {
       color: rgb(17, 0, 255);
     }
   }
-
-  
 }
+
+.comment-box {
+  padding: 6px 0;
+  display: flex;
+  border-bottom: 1px solid #838383;
+  .comment-avatar {
+    
+    img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 999px;
+    }
+  }
+  .comment-text {
+    margin-left: 12px;
+    font-size: 2rem;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+  .comment-name {
+    font-size: 2.2rem;
+    
+  }
+}
+
 
 // show内のgoogleMap
 #map {

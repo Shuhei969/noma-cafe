@@ -59,6 +59,18 @@
           =link_to @article.shop_name, @article.shop_url
       #map
 
+      -# コメント一覧
+      %h2.section-title Comments
+      - @comments.each do |comment|  
+        .comment-box
+          .comment-avatar
+            = image_tag comment.user.profile.avatar
+          .comment-text
+            %p.comment-name
+              = comment.user.display_name
+            %p= comment.content
+      = link_to 'コメントを作成',new_article_comment_path(@article)
+
 :javascript
   let map
   function initMap(){
@@ -81,11 +93,7 @@
       mapError.style.display = "none";
       //alert('該当する結果がありませんでした：' + status);
     }
-    });   
-    //marker = new google.maps.Marker({
-    //position:  {lat: 40.7828, lng:-73.9653},
-    //map: map
-    //});
+    });
   }
   
 %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{@api_key}&callback=initMap"}
