@@ -8,7 +8,7 @@
       %div
         = f.label :eyecatchs ,'画像：'
         = f.file_field :eyecatchs ,multiple: true, class: 'file-input'
-        .fas.fa-exclamation-circle.fa-2x
+        .fas.fa-exclamation-circle
         %span 最大3枚まで
       .image_area
       /選択画像プレビュー用
@@ -44,7 +44,7 @@
     %div
       = f.label :auther_comment, 'コメント'
     %div
-      = f.text_field :auther_comment, class: 'text', placeholder: '混み具合、店内の雰囲気 ....etc'
+      = f.text_area :auther_comment, class: 'text', placeholder: '混み具合、店内の雰囲気 ....etc'
     %div
       = f.label :shop_url, 'URL'
     %div

@@ -7,17 +7,18 @@
         - article.eyecatchs.each do |eyecatch|
           = image_tag eyecatch.variant(resize_to_fill: [700, 700])
     - else
-      = image_tag 'no-image.png'
+      .card-main-eyecatch
+        = image_tag 'no-image.png'
 
-  = link_to article_path(article) do
-    .card-content
+  .card-content
+    = link_to article_path(article) do
       .card-header
         .card-shop_name
           %h2= article.shop_name
         .card-like
           .fas.fa-heart.fa-2x
           %span= "#{article.like_count}" 
-          .fas.fa-comment-dots.fa-2x
+          .fas.fa-comment-alt.fa-2x
           %span= "#{article.comment_count}" 
       .card-shop_address
         %p= "住所：#{article.address}"
@@ -41,5 +42,6 @@
           .card-comment 
             .says
               %P= article.auther_comment
+      
       .card-create_day
-        %p= "投稿日：#{article.display_created_at}"
+        %span= "投稿日：#{article.display_created_at}"

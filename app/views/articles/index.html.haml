@@ -1,16 +1,32 @@
 .top
-  %h2.top-title Let's Share NOMAD CAFE
-  %p.top-title-lead available Wi-Fi & Outlet
+  .top-title
+    %h2.top-title-main NOMAD CAFE
+    %p.top-title-lead available Wi-Fi & Outlet
+  - unless user_signed_in?
+    .top-login-wrapper
+      .top-login
+        .top-login-btn
+          = link_to "Login", new_user_session_path
+        .top-login-btn
+          = button_to 'Guest', users_guest_sign_in_path, method: :post, class: "guest"
+  - else
+    %p.top-message さぁ、あなたの仕事場カフェを共有しましょう！
+
+      
 
 .container
   -# 検索フォーム
   %h2#search_toggle 
     .fas.fa-search-plus
-    検索(←click!!)
+    検索
   #index_search
     = render 'search_form'
   
   -# 記事一覧
   = render 'articles', articles: @articles
+
+= link_to new_article_path do
+  .float_btn
+    %i.fas.fa-plus.fa-2x
 
 = javascript_pack_tag 'header'

@@ -6,37 +6,39 @@
     = csrf_meta_tags
     = csp_meta_tag
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    -# = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0", name: "viewport"}
     %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    = favicon_link_tag('favicon.ico')
     
-
   %body
-    .header-wrapper
-      %header.header
-        .header_pageTitle
-          = link_to 'Nomad-Cafe', root_path
-        .header-right
-          - if user_signed_in? 
-            .article-post
-              = link_to 'お気に入り', favorites_path, class: 'header-post'
-            .article-post
-              = link_to '新規投稿', new_article_path, class: 'header-post'
-            .dropdown
-              - if current_user.profile.avatar.present? || current_user.profile.avatar != 'nil'
-                = image_tag current_user.profile.avatar, class: 'header_avatar'
-              - else
-                = image_tag 'default-avatar.png', class: 'header_avatar'
-              .dropdown-content
-                = link_to "プロフィール",profile_path
-                = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'logout-btn'
-          - else
-            = link_to "ログイン", new_user_session_path, class: "header-loginBtn"
-            = button_to '簡単ログイン', users_guest_sign_in_path, method: :post, class: "header-loginBtn guest"
+    .header
+      .header-logo
+        = link_to root_path do
+          =image_tag 'logo_transparent.png'
+      - if user_signed_in?
+        .header-nav
+          .header-nav-btn
+            = link_to '新規投稿', new_article_path, class: 'header-post'
+          .header-nav-btn
+            = link_to "プロフィール",profile_path, class: 'header-mypage'
+          .header-nav-btn
+            = link_to 'お気に入り', favorites_path, class: 'header-favorite'
+          .header-nav-btn
+            = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header-logout'
+        .header-nav-sm
+          .dropdown
+            = image_tag "humburger.svg", class: "dropbtn"
+            .dropdown-content.mini
+              = link_to "プロフィール",profile_path, class: 'header-mypage'
+              = link_to 'お気に入り', favorites_path, class: 'header-favorite'
+              = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header-logout'
     .header-padding
     - if flash.present?
       .flash
         - flash.each do |key, value|
           %div{:class => key}= value
     = yield
+    .footer
+      .footer-text
+        %p= "© Shuhei Nagao 2020"
