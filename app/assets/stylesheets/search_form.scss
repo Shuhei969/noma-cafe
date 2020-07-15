@@ -1,12 +1,16 @@
+@import "mixin";
 .search_form {
-  // font-size: 1.5rem;
   text-align: center;
   border: 1px solid #838383;
   border-radius: 4px;
-  padding: 8px 4px;
+  padding: 4px 4px;
   
   .search_text {
     border: 1px solid #EBEBEB;
+    width: 20%;
+    @include mq(md) {
+      width: 70%;
+    }
   }
 
   &_submit {
@@ -14,13 +18,30 @@
     margin-top: 8px;
     input {
       padding: 0 40px;
+      background-color: #FFF;
+      border: 1px solid #444 ;
+      border-radius: 10px;
+      color: #444;
+      &:hover {
+        opacity: 0.7;
+      }
     }
+  }
+
+  .space {
+    display: inline-block;
+    margin-left: 12px;
   }
 }
 
 #search_toggle {
   font-weight: bold;
-  color: rgb(138, 138, 138);
+  color: #444;
+  font-size: 2rem;
+  @include mq(sm) {
+    font-size: 1.4rem;
+    margin-top: 4px;
+  }
   &:hover {
     opacity: 0.7;
   }
@@ -28,6 +49,5 @@
 
 #index_search {
   display: none;
-  
 }
 

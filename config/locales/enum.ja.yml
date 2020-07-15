@@ -2,7 +2,7 @@ ja:
   # ラジオボタンにする予定なのでいらないかもしれない
   enum:
     wifi:
-      available_wifi: 'Wi-Fi'
+      available_wifi: 'WiFi'
       disavailable_wifi: ''
     
     outlet:

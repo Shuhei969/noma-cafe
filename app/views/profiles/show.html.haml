@@ -17,7 +17,6 @@
     
     %h2.section-title
       投稿記事一覧
-    
     - current_user.articles.each do |article|
       = render 'articles/article', article: article
 

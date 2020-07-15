@@ -1,88 +1,72 @@
 @import 'variables';
-
-$avatar-size: 40px;
-$header-padding-y: 12px;
-$back-icon-size: 16px;
-
-.header-wrapper {
-  // display: none;
-}
+@import 'mixin';
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 12px;
-    font-weight: bold;
-    border-bottom: 3px solid #f2f2f2;
-    // position: fixed;
-    // z-index: 2;
-    width: 100%;
-  
-    a {
-      color: #616161;
-    }
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 12px;
+  font-weight: bold;
+  border-bottom: 2px solid #ebebeb;
 
-    &_pageTitle {
-      font-size: 24px;
-      line-height: $avatar-size;
-      padding: 0 8px;
-    }
-
-    // &_logo {
-    //   width: 10%;
-    //   vertical-align: middle;
-    // }
-
-    // &-padding {
-    //   display: none;
-    //   padding-top: 69px;
-    // }
-
-    &-right {
-      display: flex;
-    }
-
-    &-post {
-      display: inline-block;
-      line-height: auto;
-      font-size: 1.5rem;
-      margin-right: 16px;
-      border: 1px solid #616161;
-      border-radius: 5px;
-      padding: 8px;
-      &:hover {
-        opacity: 0.7;
+  &-logo {
+    img {
+      width: 176px;
+      object-fit: cover;
+      @include mq(md) {
+        width: 144px;
+        @include mq(sm) {
+          width: 112px;
+        }
       }
-    }
-    
-    &-loginBtn {
-      display: inline-block;
-      line-height: auto;
-      font-size: 1.5rem;
-      margin-right: 16px;
-      border: 1px solid #616161;
-      border-radius: 5px;
-      padding: 8px;
-      &:hover {
-        opacity: 0.7;
-      }
-    }
-
-    .guest {
-      cursor: pointer;
-      background-color: #ffffff;
-      border: 1px solid #616161;
-      // color: #616161;
-     
-    }
-
-
-    &_avatar {
-      width: $avatar-size;
-      height: $avatar-size;
-      border: 2px solid rgba(4, 142, 255, 0.884);
-      border-radius: 999px;
     }
   }
+
+  &-nav {
+    display: flex;
+    align-items: center;
+    @include mq(sm) {
+      display: none;  
+    }
+
+    &-btn {
+      width: 108px;
+      text-align: center;
+      font-size: 1.5rem;
+      padding: 4px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      .header-logout {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #444;
+        border: none;
+        background-color: #fff;
+        font-family: "Crimson Text", "游明朝", "ヒラギノ明朝 ProN W3", serif;
+        padding: 0;
+      }
+    }
+  }
+  
+  &-nav-sm {
+    display: none;
+    .header-logout {
+      text-align: left;
+      width: 100%;
+      font-size: 1rem;
+      color: #444;
+      border: none;
+      background-color: #fff;
+      font-family: "Crimson Text", "游明朝", "ヒラギノ明朝 ProN W3", serif;
+      padding: 12px 16px;
+    }
+    @include mq(sm) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
   

@@ -1,24 +1,16 @@
 .search_form
   = search_form_for(@q, url: search_articles_path) do |f|
     .search_form_field
-      -# = f.label :shop_name, '店舗名'
-      -# = f.search_field :shop_name_cont, class: 'search_text'
-      -# = f.label :prefecture_id, 'エリア'
-      -# = f.collection_select :prefecture_id_eq, @prefectures, :id, :name, :include_blank => '指定なし'
-      -# = f.collection_select :area_id_eq, @areas, :id, :name, :include_blank => '指定なし'
-      -# = f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: "指定なし"
-      -# = f.select :area_id_eq, [], include_blank: "---", class: "default-city-select"
-      -# - Prefecture.all.each do |prefecture|
-      -#   %template{id: "area-of-prefecture#{prefecture.id}"}
-      -#     = f.collection_select :area_id_eq, prefecture.areas, :id, :name, include_blank: "指定なし"
-      = f.label :shop_name_or_address_cont_any, 'キーワード検索'
+      = f.label :shop_name_or_address_cont_any, 'キーワード'
       = f.search_field :shop_name_or_address_cont_any, class: 'search_text', placeholder: '店舗名,地名 etc....'
+      .space
       = f.label :wifi, 'Wi-Fi'
       = f.radio_button :wifi_eq, '', {:checked => true}
       指定なし
       = f.radio_button :wifi_eq, 0
       あり
-      = f.label :wifi, '電源'
+      .space
+      = f.label :outlet, '電源'
       = f.radio_button :outlet_eq, '', {:checked => true}
       指定なし
       = f.radio_button :outlet_eq, 0

@@ -1,6 +1,7 @@
+@import './mixin';
 .top {
   width: 100%;
-  height: 350px;
+  height: 440px;
   background-image: image-url("top.png");
   background-size: cover;
   position: relative;
@@ -8,36 +9,161 @@
     width: 100%;
     height: auto;
   }
-
-  &-title {
-    position: absolute;
-    z-index: 1;
-    text-align: center;
-    color: yellow;
-    font-weight: bold;
-    font-size: 7rem;
-    width: 100%;
-    top: 30%;
-
-    &-lead {
-    position: absolute;
-    z-index: 1;
-    text-align: center;
-    color: yellow;
-    font-weight: normal;
-    font-size: 3rem;
-    width: 100%;
-    top: 60%;
+  @include mq(md) {
+    height: 300px;
+    @include mq(sm) {
+      height: 160px;
     }
   }
+  
   &::before {
-  background-color: rgba(0,0,0,0.4);
-  /* 自由に位置指定 */
+  background-color: rgba(0,0,0,0.6);
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  content: ' ';
+  content: '';
+  }
+
+// ---------------title
+  &-title {
+    width: 100%;
+    position: absolute;
+    top: 25%;
+    text-align: center;
+    color: rgb(147, 226, 231);
+    @include mq(sm) {
+      top: 12%;
+      left: 4%;
+      text-align: left;
+    }
+
+    &-main{
+      font-size: 11rem;
+      line-height: 8rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      @include mq(md) {
+        font-size: 5.6rem;
+        line-height: 5.6rem;
+        @include mq(sm) {
+          font-size: 4rem;
+          line-height: 4rem;  
+          margin-bottom: 4px;
+        }
+      }
+    }
+    
+    &-lead {
+      font-size: 4rem;
+      line-height: 4rem;
+      @include mq(md) {
+        font-size: 3.2rem;
+        line-height: 3.2rem;
+        @include mq(sm) {
+          font-size: 2rem;
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+  
+  &-message {
+    width: 100%;
+    position: absolute;
+    top: 70%;
+    text-align: center;
+    color: rgb(147, 226, 231);
+    font-weight: bold;
+    @include mq(sm) {
+      top: 60%;
+      left: 4%;
+      text-align: left;
+    }
+
+    font-size: 4rem;
+    line-height: 4rem;
+    @include mq(md) {
+      font-size: 2.6rem;
+      line-height: 2.6rem;
+      @include mq(sm) {
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+      }
+    }
+
+  }
+
+  
+
+// ---------------loginBtn
+  .top-login-wrapper {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 22px;
+    display: flex;
+    justify-content: center;
+    @include mq(sm) {
+      bottom: 6px;
+      justify-content: flex-end;
+      width: 98%;
+    }
+  }
+
+  .top-login {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &-btn {
+      background-color: rgb(94, 179, 185);
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        font-size: 2.8rem;
+        color: #fff;
+        display: inline-block;
+        transition: all .3s ease 0s;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+      input {
+        font-size: 2.8rem;
+        color: #fff;
+        border: none;
+        background-color: rgb(94, 179, 185);
+        font-weight: bold;
+        font-family: "Crimson Text", "游明朝", "ヒラギノ明朝 ProN W3", serif;
+        cursor: pointer;
+        display: inline-block;
+        transition: all .3s ease 0s;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+      
+      @include mq(md) {
+        width: 100px;
+        height: 100px;
+        a, input {
+          font-size: 2.4rem;
+        }
+        @include mq(sm) {
+          width: 50px;
+          height: 50px;
+          a, input {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
   }
 }

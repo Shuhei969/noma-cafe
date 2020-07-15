@@ -1,150 +1,248 @@
 @import './variables';
+@import './mixin';
 
-$heart-size: 30px;
-$avatar-size: 40px;
-$text-font-size: 2rem; 
+$heart-size: 32px;
+$avatar-size: 52px;
+$avatar-size-md: 42px;
+$avatar-size-sm: 36px;
+
 
 
 .card {
-  background-color: rgb(238, 238, 238);
-  margin: 16px 0;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  width: 100%;
   display: flex;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   padding: 16px;
+  margin: 16px 0;
+  @include mq(sm) {
+    display: block;
+  }
 
   &-image {
-    width: 100%;
-    max-width: 200px;
-    max-height: 200px;
-  
+    width: 200px;
+    height: auto;
+    margin: 0 12px 0 0;
+
     .card-main-eyecatch {
-      width: 80%;
-      margin: 0 auto;
-      
       img {
         width: 100%;
         height: auto;
         border-radius: 6px;
+        border: solid 1px #e6e6e6 ;
       }
     }
-
     .card-eyecatch-list {
-      width: 80%;
-      margin: 0 auto;
+      width: 100%;
       display: flex;
-
+      justify-content: space-around;
       img {
-        width: 30%;
+        width: 32%;
         height: auto;
-        margin-right: 8px;
         border-radius: 6px;
+        border: solid 1px #e6e6e6 ;
+      }
+    }
+    @include mq(sm) {
+      display: flex;
+      flex-flow: row-reverse;
+      width: 100%;
+      margin: 0 0 4px 0;
+      .card-eyecatch-list {
+        width: 100px;
+        flex-flow: column;
+        flex-wrap: wrap;
+        justify-content: left;
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+        }
+      }
+      .card-main-eyecatch {
+        img {
+          width: 100%;
+          height: 120px;
+          object-fit: cover;
+        }
       }
     }
   }
 
   &-content {
-    width: 800px;
+    width: 100%;
+    padding: 4px;
   }
 
   &-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    @include mq(sm) {
+      margin-bottom: 4px;
+    }
+    
+    .card-shop_name {
+      font-size:$text-size-lg;
+      @include mq(md) {
+        font-size:$text-size-md;
+        @include mq(sm) {
+          font-size:$text-size-sm;
+        }
+      }
+    }
+    
+    .card-like {
+      font-size: 1.6rem;
+      @include mq(md) {
+        font-size:1.2rem;
+        @include mq(sm) {
+          font-size:0.8rem;
+        }
+      }
+      span {
+        display: inline-block;
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 49px;
+        @include mq(md) {
+          font-size:1.4rem;
+          line-height: 36px;
+          @include mq(sm) {
+            font-size:0.8rem;
+            line-height: 18px;
+            padding-right: 4px;
+          }
+        }
+      } 
+    }
   }
-
-  &-shop_name {
-    font-size: 1.6rem;
-    margin-bottom: 8px;
-  }
-
-  &-like {
-    font-size: 1.2rem;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    span {
-      display: inline-block;
-      line-height: 44px;
-      font-size: 1.8rem;
-    } 
-  }
-
-  &-shop_address {
-    font-size: $text-font-size;
+    
+    &-shop_address {
+    width: 100%;
+    font-size: $text-size-lg;
+    overflow: auto;
     margin-bottom: 4px;
-    word-wrap: break-word;
+    @include mq(md) {
+      font-size:$text-size-md;
+      @include mq(sm) {
+        font-size:$text-size-sm;
+      }
+    }
   }
 
   &-shop_facility {
-    font-size: 1.5rem;
-    margin-bottom: 4px;
+    width: 100%;
+    font-size: $text-size-lg;
+    margin-bottom: 12px;
+    @include mq(md) {
+      font-size: $text-size-md;
+      @include mq(sm) {
+        font-size: $text-size-sm;
+      }
+    }
 
-    .wifi-icon {
+    .wifi-icon, .outlet-icon{
       display: inline-block;
-      background-color: #5e615f;
       color:#fff;
-      border-radius: 5px;
       font-weight: bold;
-      padding: 4px;
+      background-color: #444;
+      border-radius: 5px;
+      padding: 2px 4px;
       margin-right: 4px;
       line-height: 20px;
-    }
-    .outlet-icon {
-      display: inline-block;
-      background-color: #5e615f;
-      color:#fff;
-      border-radius: 5px;
-      font-weight: bold;
-      padding: 4px;
-      margin-right: 8px;
-      line-height: 20px;
+      @include mq(sm) {
+        line-height: 12px;
+      }
     }
   }
 
   &-detail {
-    margin-top: 12px;
-    cursor: pointer;
+    width: 100%;
     display: flex;
     
     .card-avatar {
+      width: 72px;
       text-align: center;
-      margin-right: 10px;
+      margin-right: 8px;
       img {
-        border-radius: 30px;
+        border-radius: 999px;
         width: $avatar-size;
         height: $avatar-size;
-        vertical-align: middle;
+
+      }
+      @include mq(md) {
+        img {
+          width: $avatar-size-md;
+          height: $avatar-size-md;
+        }
+        @include mq(sm) {
+          width: 64px;
+          margin-right: 0;
+          p {
+            font-size: 1rem;
+            }
+          img {
+            width: $avatar-size-sm;
+            height: $avatar-size-sm;
+          }
+        }
       }
     }
 
     .card-comment {
-      width: 100%;
+      width:100%;
       .says {
         position: relative;
         padding: 8px;
-        width: 100%;
-        margin-left: 8px;
-        border-radius: 12px;
-        background: #fff;    
-        font-size: 1.4rem;  
+        border-radius: 6px;
+        background: #ecebeb;
+        font-size: $text-size-lg;
+
+        @include mq(md) {
+          font-size:$text-size-md;
+          @include mq(sm) {
+            font-size:$text-size-sm;
+            padding: 4px;
+          }
+        }
       }
       
       .says:before {
         content: "";
         display: inline-block;
         position: absolute;
-        top: 10px; 
+        top: 8px; 
         left: -20px;
-        border: 8px solid transparent;
-        border-right: 18px solid #fff;
+        border: 6px solid transparent;
+        border-right: 18px solid #ecebeb;
         -webkit-transform: rotate(35deg);
-        transform: rotate(-6deg);
+        transform: rotate(0deg);
+        @include mq(sm) {
+          top: 4px; 
+          left: -12px;
+          transform: rotate(0deg);
+          border-right: 10px solid #ecebeb;
+        }
       }
     }
   }
   &-create_day {    
-    p {
-      text-align: right;
+    height: 24px;
+    span{
+      font-size: 1.4rem;
+      position: absolute;
+      z-index: 1;
+      bottom: 20px;
+      right: 20px;
+      @include mq(md) {
+        font-size: 1.2rem;
+        @include mq(sm) {
+          font-size: 0.6rem;
+          bottom: 6px;
+          right: 12px;
+        }
+      }
     }
   }
 }

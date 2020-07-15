@@ -1,71 +1,86 @@
 .container
   .article#article-show{data: {article_id: @article.id}}
-    .article-header
-      %h1.article-title= @article.shop_name
-      .article-detail
-        - if user_signed_in? 
-          .article-heart.hidden.active-heart
-            = image_tag 'heart-active.svg'
-          .article-heart.hidden.inactive-heart
-            = image_tag 'heart.svg'
-            %span Like!
-          - if current_user.has_written?(@article)
-            .detail_actions
-              .dropdown.article-dropdown
-                = image_tag "actions.svg", class: "dropbtn"
-                .dropdown-content.mini
-                  = link_to "編集する", edit_article_path(@article)
-                  -# = link_to "削除する", article_path(@article), data: {method: "delete", confirm: "本当に削除してよろしいですか？"}
-                  = button_to "削除する", article_path(@article), method: :delete,data: {confirm: "本当に削除してよろしいですか？"},class: 'delete-btn'
-    /イメージ画像
-    - if @article.eyecatchs.attached?
-      .article-image
-        - if @article.eyecatchs.present?
-          .article-image-sub{data: {sub_image_id: @article.id}}
-            - @article.eyecatchs.each do |eyecatch|
-              = image_tag eyecatch.variant(resize_to_fill: [900, 900])
-          .article-image-main{data: {main_image_id: @article.id}}
-            = image_tag @article.eyecatchs[0].variant(resize_to_fill: [900, 900]), {data: {image_id: @article.id}}
+    .article-image
+      - if @article.eyecatchs.present?
+        .article-image-sub{data: {sub_image_id: @article.id}}
+          - @article.eyecatchs.each do |eyecatch|
+            = image_tag eyecatch.variant(resize_to_fill: [500, 500])
+        .article-image-main{data: {main_image_id: @article.id}}
+          = image_tag @article.eyecatchs[0].variant(resize_to_fill: [500, 500]), {data: {image_id: @article.id}}
+      - else 
+        .article-image-main
+          = image_tag 'no-image.png', class: "article-no-image"
+      
+      - if user_signed_in? 
+        / いいねマーク
+        .article-heart.hidden.active-heart
+          = image_tag 'heart-active.svg'
+        .article-heart.hidden.inactive-heart
+          = image_tag 'heart.svg'
+        - if current_user.has_written?(@article)
+          .dropdown.article-edit_btn
+            = image_tag "edit.svg", class: "dropbtn"
+            .dropdown-content.mini
+              = link_to "編集する", edit_article_path(@article)
+              = button_to "削除する", article_path, class: 'article-delete_btn'
+    .card-detail
+      .card-avatar
+        -if @article.user.profile.present?
+          = image_tag @article.user.profile.avatar
+        - else
+          = image_tag 'default-avatar.png' 
+        %p= @article.user.display_name
+      -if @article.auther_comment.present? || @article.auther_comment != ""
+        .card-comment 
+          .says
+            %P= @article.auther_comment
     /店舗情報
-    .shop_info
-      %h2.section-title
+    .shop_wrapper
+      .section-title
         Shop Info
-      .article-shop_name
-        ="店舗名：#{@article.shop_name}"
-      .article-address
-        住所：
-        #address{:value => "#{@article.address}"}
-          = @article.address
-      .article_facility
-        %p.article_facility_wifi
-          Wi-Fi：
-          - if @article.wifi == 'available_wifi'
-            あり
-          -else
-            なし
-        %p.article_facility_wifi
-          電源コンセント：
-          - if @article.outlet == 'available_outlet'   
-            あり
-          -else
-            なし
-      -if @article.shop_url.present? || @article.shop_url != ""
-        %p.article_shop_url
-          URL：
-          =link_to @article.shop_name, @article.shop_url
+      .article-shop-info
+        .article-shop_name
+          ="店舗名：#{@article.shop_name}"
+        .article-address
+          #address{:value => "#{@article.address}"}
+            = "住所：#{@article.address}"
+        .article_facility
+          %p.article_facility_wifi
+            Wi-Fi：
+            - if @article.wifi == 'available_wifi'
+              あり
+            -else
+              なし
+          %p.article_facility_wifi
+            電源コンセント：
+            - if @article.outlet == 'available_outlet'   
+              あり
+            -else
+              なし
+        -if @article.shop_url.present? || @article.shop_url != ""
+          %p.article_shop_url
+            URL：
+            =link_to @article.shop_name, @article.shop_url
+          
       #map
 
       -# コメント一覧
-      %h2.section-title Comments
-      - @comments.each do |comment|  
-        .comment-box
-          .comment-avatar
-            = image_tag comment.user.profile.avatar
-          .comment-text
-            %p.comment-name
-              = comment.user.display_name
-            %p= comment.content
-      = link_to 'コメントを作成',new_article_comment_path(@article), class:'btn-primary'
+      .section-title 
+        Comments
+      .comment-wrapper
+        - @comments.each do |comment|  
+          .comment-box
+            .comment-avatar
+              -if comment.user.profile.avatar.present?
+                = image_tag comment.user.profile.avatar
+              - else
+                = image_tag 'default-avatar.png' 
+            .comment-text
+              %p.bold
+                = comment.user.display_name
+              %p= comment.content
+        = link_to 'コメントを作成',new_article_comment_path(@article), class:'btn-primary'
+
 
 -# GoogleMAP(画像は#mapに表示される)
 :javascript
