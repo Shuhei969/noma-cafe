@@ -38,12 +38,15 @@ gem 'geocoder'
 gem "gmaps4rails"
 gem 'mini_magick', '~> 4.8'
 gem 'font-awesome-sass'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do

@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  
   def index
     @articles = Article.all.order(id: 'DESC')
     # ----下記は検索フォーム用に記述----
