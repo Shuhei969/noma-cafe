@@ -22,7 +22,10 @@
 #
 class Article < ApplicationRecord
   # validate :eyecatch_count_validation
-
+  validates :auther_comment, length: { maximum: 1000 }
+  validates :shop_name, presence: true
+  validates :address, presence: true
+  
   enum wifi: { available_wifi: 0, disavailable_wifi: 1 }
   enum outlet: { available_outlet: 0, disavailable_outlet: 1 }
 
@@ -30,9 +33,6 @@ class Article < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many_attached :eyecatchs, dependent: :destroy
   belongs_to :user
-
-  validates :shop_name, presence: true
-  validates :address, presence: true
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
