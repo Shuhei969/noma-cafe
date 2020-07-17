@@ -50,9 +50,8 @@ class User < ApplicationRecord
 
   def self.guest
     # find_or_create_by!(email: 'guest@example.com') do |user|
-    find_or_create_by!(email: 'nomadcafe000@gmail.com') do |user|
+    find_or_create_by!({:email => Settings.mail[:email]}) do |user|
       user.password = SecureRandom.urlsafe_base64
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
 end
