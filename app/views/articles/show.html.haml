@@ -33,7 +33,8 @@
       -if @article.auther_comment.present? || @article.auther_comment != ""
         .card-comment 
           .says
-            %P= @article.auther_comment
+            -# %P= @article.auther_comment
+            = simple_format(@article.auther_comment)
     /店舗情報
     .shop_wrapper
       .section-title

@@ -21,8 +21,8 @@
 #  index_articles_on_user_id  (user_id)
 #
 class Article < ApplicationRecord
-  # validate :eyecatch_count_validation
-  validates :auther_comment, length: { maximum: 1000 }
+  validates :eyecatchs, length: { maximum: 3 }
+  validates :auther_comment, length: { maximum: 240 }
   validates :shop_name, presence: true
   validates :address, presence: true
   

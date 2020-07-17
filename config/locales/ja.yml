@@ -10,6 +10,10 @@ ja:
       article:
         title: 'タイトル'
         content: '内容'
+        shop_name: '店舗名称'
+        address: '住所'
+        auther_comment: 'コメント'
+        shop_url: 'URL'
   date:
     abbr_day_names:
     - 日

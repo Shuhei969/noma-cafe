@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title NomaCafe
+    %title NOMAD CAFE
     = csrf_meta_tags
     = csp_meta_tag
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
@@ -39,6 +39,6 @@
         - flash.each do |key, value|
           %div{:class => key}= value
     = yield
-    .footer
-      .footer-text
-        %p= "© Shuhei Nagao 2020"
+    -# .footer
+    -#   .footer-text
+    -#     %p= "© Shuhei Nagao 2020"

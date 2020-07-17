@@ -22,9 +22,9 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.build(article_params)
     if @article.save
-      redirect_to article_path(@article), notice: '投稿を保存しました'
+      redirect_to article_path(@article), notice: '投稿しました'
     else
-      flash.now[:error] = '投稿の保存に失敗しました'
+      # flash.now[:error] = '投稿の保存に失敗しました'
       render :new
     end
   end
@@ -38,11 +38,10 @@ class ArticlesController < ApplicationController
   def update
     @article = current_user.articles.find(params[:id])
     # 画像関連
-    # @article.eyecatchs.detach
     if @article.update(article_params)
       redirect_to article_path(@article), notice: '更新できました'
     else
-      flash.now[:error] = '更新できませんでした'
+      # flash.now[:error] = '更新できませんでした'
       render :edit
     end
   end

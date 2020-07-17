@@ -1,5 +1,7 @@
 @import "mixin";
 
+
+
 span {
   font-size: 1.4rem;
 }
@@ -80,4 +82,10 @@ select {
       }
     }
   }
+}
+
+.js-text-count {
+  width: 100%;
+  text-align: right;
+  font-size: 1.2rem;
 }
