@@ -39,6 +39,7 @@ gem "gmaps4rails"
 gem 'mini_magick', '~> 4.8'
 gem 'font-awesome-sass'
 gem 'faker'
+gem 'config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

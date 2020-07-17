@@ -1,4 +1,17 @@
 %p
-  Welcome #{@email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+  こんにちは #{@email}！
+  %br
+%p NOMAD CAFEへの会員登録ありがとうございます。
+%p 下記のアドレスをクリックしてアカウント認証を行なってください。
+%p= link_to 'アカウントを認証する', confirmation_url(@resource, confirmation_token: @token)
+%br
+%br
+%p
+  ※このメールは返信しても届きません。お問い合わせはアプリを起動して「お問い合わせ」からお願いいたします。
+  %br
+  %br
+  ■ご登録の覚えがないのにこのメールが届いたという方
+  %br
+  ご迷惑をおかけし申し訳ありません。大変お手数ですが下記メールアドレスまでご連絡をお願いいたします。
+  %br
+  nomadcafe000@gmail.com
