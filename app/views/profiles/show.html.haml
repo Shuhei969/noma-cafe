@@ -9,7 +9,8 @@
       .profilePage_user_basicInfo
         .profilePage_user_header
           .profilePage_user_name
-            = current_user.profile&.nickname
+            -# = current_user.profile&.nickname
+            = current_user.display_name
           .profilePage_user_actionButton
             = link_to 'Edit', edit_profile_path
         .profilePage_user_introduction
