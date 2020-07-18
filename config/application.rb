@@ -17,7 +17,11 @@ module NomaCafe
     # the framework and any gems in your application.
     config.i18n.default_locale = :ja
 
-    Bundler.require(*Rails.groups)
-    Dotenv::Railtie.load
+    if Rails.env.development? || Rails.env.test?
+      Bundler.require(*Rails.groups)
+      Dotenv::Railtie.load
+    end
+    # Bundler.require(*Rails.groups)
+    # Dotenv::Railtie.load
   end
 end
