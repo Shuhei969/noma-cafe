@@ -34,10 +34,10 @@
               = link_to 'お気に入り', favorites_path, class: 'header-favorite'
               = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header-logout'
     .header-padding
-    - if flash.present?
-      .flash
-        - flash.each do |key, value|
-          %div{:class => key}= value
+      - if flash.present?
+        .flash
+          - flash.each do |key, value|
+            %div{:class => key}= value
     = yield
     -# .footer
     -#   .footer-text

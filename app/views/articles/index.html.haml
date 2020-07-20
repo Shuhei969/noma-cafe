@@ -3,6 +3,7 @@
     %h2.top-title-main NOMAD CAFE
     %p.top-title-lead available Wi-Fi & Outlet
   - unless user_signed_in?
+    -# %p.top-message まずはログインしましょう！ >>
     .top-login-wrapper
       .top-login
         .top-login-btn
@@ -25,8 +26,9 @@
   -# 記事一覧
   = render 'articles', articles: @articles
 
-= link_to new_article_path do
-  .float_btn
-    %i.fas.fa-plus.fa-2x
+- if user_signed_in?
+  = link_to new_article_path do
+    .float_btn
+      %i.fas.fa-plus.fa-2x
 
 = javascript_pack_tag 'header'
