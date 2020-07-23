@@ -1,24 +1,4 @@
 .container
-  .profilePage
-    .profilePage_user
-      .profilePage_user_image
-        - if current_user.profile.present?
-          = image_tag current_user.profile.avatar.variant(resize_to_fill: [300, 300])
-        - else 
-          = image_tag 'default-avatar.jpg', class: 'profile_avatar'
-      .profilePage_user_basicInfo
-        .profilePage_user_header
-          .profilePage_user_name
-            -# = current_user.profile&.nickname
-            = current_user.display_name
-          .profilePage_user_actionButton
-            = link_to 'Edit', edit_profile_path
-        .profilePage_user_introduction
-          = current_user.profile&.introduction
-    
-    %h2.section-title
-      投稿記事一覧
-    - current_user.articles.each do |article|
-      = render 'articles/article', article: article
-
+  = render 'commons/profile', user: current_user
+  
 = javascript_pack_tag 'header'

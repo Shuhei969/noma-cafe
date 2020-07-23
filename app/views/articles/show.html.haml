@@ -24,12 +24,13 @@
               = link_to "編集する", edit_article_path(@article)
               = button_to "削除する", article_path, class: 'article-delete_btn'
     .card-detail
-      .card-avatar
-        -if @article.user.profile.present?
-          = image_tag @article.user.profile.avatar
-        - else
-          = image_tag 'default-avatar.png' 
-        %p= @article.user.display_name
+      = link_to acount_path(@article.user_id) do
+        .card-avatar
+          -if @article.user.profile.present?
+            = image_tag @article.user.profile.avatar
+          - else
+            = image_tag 'default-avatar.png' 
+          %p= @article.user.display_name
       -if @article.auther_comment.present? || @article.auther_comment != ""
         .card-comment 
           .says
