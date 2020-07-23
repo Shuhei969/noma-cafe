@@ -1,0 +1,23 @@
+
+.profilePage
+  .profilePage_user
+    .profilePage_user_image
+      - if user.profile.present?
+        = image_tag user.profile.avatar.variant(resize_to_fill: [300, 300])
+      - else 
+        = image_tag 'default-avatar.jpg', class: 'profile_avatar'
+    .profilePage_user_basicInfo
+      .profilePage_user_header
+        .profilePage_user_name
+          = user.display_name
+        - if user == current_user
+          .profilePage_user_actionButton
+            = link_to 'Edit', edit_profile_path
+      .profilePage_user_introduction
+        = user.profile&.introduction
+  
+  %h2.section-title
+    投稿記事一覧
+  - user.articles.each do |article|
+    = render 'articles/article', article: article
+

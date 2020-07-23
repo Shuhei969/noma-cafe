@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:index]
+  resources :acounts, only: [:show]
   resource :profile
 end
