@@ -35,6 +35,7 @@ gem 'annotate'
 gem 'devise'
 gem 'ransack'
 gem 'geocoder'
+gem 'dotenv-rails'
 gem "gmaps4rails"
 gem 'mini_magick', '~> 4.8'
 gem 'font-awesome-sass'
