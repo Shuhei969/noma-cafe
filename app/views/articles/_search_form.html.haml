@@ -1,8 +1,8 @@
 .search_form
-  = search_form_for(@q, url: search_articles_path) do |f|
+  = search_form_for(@q, method: :get) do |f|
     .search_form_field
-      = f.label :shop_name_or_address_cont_any, 'キーワード'
-      = f.search_field :shop_name_or_address_cont_any, class: 'search_text', placeholder: '店舗名,地名 etc....'
+      = f.label :shop_name_or_address_cont_all, 'キーワード'
+      = f.search_field :shop_name_or_address_cont_all, class: 'search_text', placeholder: '店舗名,地名 etc....'
       .space
       = f.label :wifi, 'Wi-Fi'
       = f.radio_button :wifi_eq, '', {:checked => true}
@@ -17,4 +17,3 @@
       あり
     %div.search_form_submit
       = f.submit "検索"
--# = javascript_pack_tag 'search_prefecture'

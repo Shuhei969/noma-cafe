@@ -1,12 +1,11 @@
 class ArticlesController < ApplicationController
   
   def index
-    @articles = Article.all.order(id: 'DESC')
-    # ----下記は検索フォーム用に記述----
-    # @prefectures = Prefecture.all
-    # @areas = Area.all
-    @q = @articles.ransack(params[:q])
-    @articles = @q.result(distinct: true)
+    params[:q] ||= HashWithIndifferentAccess.new
+    params[:q][:shop_name_or_address_cont_all] = params[:q][:shop_name_or_address_cont_all].try { |prm| prm.split(/[[:blank:]]/) }
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).order(id: 'DESC')
+    # 初期表示は検索条件なし全件表示として表示する
   end
 
   def show
@@ -30,8 +29,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    # @article = Article.find(params[:id])
-    # before_actionによりアクション内の記載は削除して省略
     @article = current_user.articles.find(params[:id])
   end
 
@@ -52,14 +49,6 @@ class ArticlesController < ApplicationController
     redirect_to root_path, notice: '削除に成功しました'
   end
 
-  
-
-  # ---------------------------------------ransack---------------------------------------
-  def search
-    @q = Article.search(search_params)
-    @articles = @q.result(distinct: true)
-  end
-
   private
   def article_params
     params.require(:article).permit(
@@ -76,8 +65,3 @@ class ArticlesController < ApplicationController
     )
   end
 end
-  # ---------------------------------------ransack---------------------------------------
-  def search_params
-    params.require(:q).permit!
-  end
-
