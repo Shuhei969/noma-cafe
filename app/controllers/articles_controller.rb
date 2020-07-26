@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   
   def index
     params[:q] ||= HashWithIndifferentAccess.new
-    params[:q][:shop_name_or_address_cont_all] = params[:q][:shop_name_or_address_cont_all].try { |prm| prm.split(/[[:blank:]]/) }
+    params[:q][:shop_name_and_address_cont_any] = params[:q][:shop_name_and_address_cont_any].try { |prm| prm.split(/[[:blank:]]/) }
     @q = Article.ransack(params[:q])
     @articles = @q.result(distinct: true).order(id: 'DESC')
     # 初期表示は検索条件なし全件表示として表示する
