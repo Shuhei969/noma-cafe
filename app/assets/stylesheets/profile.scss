@@ -62,12 +62,47 @@ $image_size: 56px;
         border: 1px solid #858585 ;
         border-radius: 4px;
       }
+
+      .follow_btn {
+        color: #858585;
+        font-size: 1.6rem;
+        font-weight: bold;
+        border: 1px solid #858585 ;
+        border-radius: 4px;
+        position: absolute;
+        top: 12%;
+        left: 20%;
+        padding: 4px;
+        text-align: center;
+        width: 120px;
+      }
+      .unfollow_btn {
+        color: #fff;
+        background-color: rgb(94, 179, 185);
+        font-size: 1.6rem;
+        font-weight: bold;
+        border: 1px solid rgb(94, 179, 185);
+        border-radius: 4px;
+        position: absolute;
+        top: 12%;
+        left: 20%;
+        padding: 4px;
+        text-align: center;
+        width: 120px;
+      }
       @include mq(sm) {
         width: 14px;
         padding: 0 12px; 
         a {
           width: 30px;
           font-size: 1rem;
+        }
+        .follow_btn,.unfollow_btn {
+          width: 70px;
+          font-size: 1rem;
+          padding: 2px;
+          top: 0;
+          left: 0;
         }
       }
     }
