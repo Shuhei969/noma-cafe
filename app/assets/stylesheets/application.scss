@@ -12,6 +12,7 @@
 @import "font-awesome";
 @import "mixin";
 @import "devise";
+@import "followlist";
 
 
  html {
@@ -56,7 +57,7 @@ p {
 }
 .section-title {
   text-align: center;
-  text-decoration-line: underline;
+  // text-decoration-line: underline;
   margin: 8px 0;
   font-size: 2.4rem;
   font-weight: bold;

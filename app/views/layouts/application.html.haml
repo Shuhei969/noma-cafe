@@ -23,6 +23,8 @@
           .header-nav-btn
             = link_to "プロフィール",profile_path, class: 'header-mypage'
           .header-nav-btn
+            = link_to 'フォロー', followlist_path, class: 'header-followlist'
+          .header-nav-btn
             = link_to 'お気に入り', favorites_path, class: 'header-favorite'
           .header-nav-btn
             = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header-logout'
@@ -32,6 +34,7 @@
             .dropdown-content.mini
               = link_to "プロフィール",profile_path, class: 'header-mypage'
               = link_to 'お気に入り', favorites_path, class: 'header-favorite'
+              = link_to 'フォロー', followlist_path, class: 'header-followlist'
               = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header-logout'
     .header-padding
       - if flash.present?
