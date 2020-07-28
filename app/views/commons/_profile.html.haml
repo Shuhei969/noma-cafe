@@ -13,6 +13,13 @@
         - if user == current_user
           .profilePage_user_actionButton
             = link_to 'Edit', edit_profile_path
+        - else
+          - if current_user&.has_followed?(user)
+            .profilePage_user_actionButton
+              = button_to 'フォロー中', acount_unfollows_path(user), data: {method: 'post'},class: 'unfollow_btn'
+          - else
+            .profilePage_user_actionButton
+              = button_to 'フォローする', acount_follows_path(user), data: {method: 'post'},class: 'follow_btn'
       .profilePage_user_introduction
         = user.profile&.introduction
   

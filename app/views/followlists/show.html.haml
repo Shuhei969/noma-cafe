@@ -1,0 +1,23 @@
+.container
+  .section-title
+    %h3="フォロー(#{@profiles.count}人)"
+  - if @profiles.present?
+    - @profiles.each do |profile|
+      = link_to acount_path(profile.user) do
+        .followings
+          .followings_image
+            - if profile.present?
+              = image_tag profile.avatar.variant(resize_to_fill: [150, 150])
+            - else 
+              = image_tag 'default-avatar.jpg', class: 'profile_avatar'
+          .followings_basicInfo    
+            .followings_basicInfo_name
+              = profile.user.display_name
+            .followings_basicInfo_introduction
+              = profile&.introduction
+
+  - else
+    .followings_none
+      %p="まだフォローしている人がいません。"
+      %p="投稿一覧からお気に入りを見つけてフォローしましょう！"
+      = link_to '<< 投稿一覧へ', root_path, class: 'followings_none_link'
