@@ -78,7 +78,6 @@ $avatar-size-sm: 30px;
     display: flex;
     justify-content: space-between;
     @include mq(sm) {
-      
     }
     
     .card-shop_name {
@@ -93,12 +92,16 @@ $avatar-size-sm: 30px;
     }
     
     .card-like {
+      text-align: right;
       font-size: 1.6rem;
+      margin-bottom: 8px;
       @include mq(md) {
         font-size:1.2rem;
         @include mq(sm) {
           font-size:0.8rem;
           line-height: 1rem;
+          text-align: right;
+          display: none;
         }
       }
       span {
@@ -113,13 +116,15 @@ $avatar-size-sm: 30px;
             font-size:0.8rem;
             line-height: 10px;
             padding-right: 2px;
+            text-align: right;
           }
         }
-      } 
+      }
     }
   }
     
-    &-shop_address {
+
+  &-shop_address {
     width: 100%;
     font-size: $text-size-lg;
     overflow: auto;
@@ -229,6 +234,7 @@ $avatar-size-sm: 30px;
       }
     }
   }
+  
   &-create_day {    
     height: 24px;
     span{
@@ -241,10 +247,21 @@ $avatar-size-sm: 30px;
         font-size: 1.2rem;
         @include mq(sm) {
           font-size: 1rem;
-          bottom: 6px;
-          right: 12px;
+          bottom: 10px;
+          right: 80px;
         }
       }
+    }
+  }
+
+  &-like-sm {
+    font-size:0.8rem;
+    line-height: 10px;
+    padding-right: 2px;
+    text-align: right;
+    display: none;
+    @include mq(sm) {
+      display: block;
     }
   }
 }

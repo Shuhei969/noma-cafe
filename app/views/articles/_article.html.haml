@@ -44,6 +44,10 @@
             .says
               -# %P= article.auther_comment
               = simple_format(article.auther_comment)
-      
       .card-create_day
         %span= "投稿日：#{article.display_created_at}"
+      .card-like-sm
+        .fas.fa-heart.fa-2x
+        %span= "#{article.like_count}" 
+        .fas.fa-comment-alt.fa-2x
+        %span= "#{article.comment_count}" 
