@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# NOMAD CAFE(ノマド カフェ)
+  仕事/勉強を行う場所として最適なカフェを共有する"カフェ専門情報共有サービス"です。
+  https://www.nomad-cafe.xyz/
 
-Things you may want to cover:
 
-* Ruby version
+# 主要機能
+・ログイン機能
+ → gem"devise"を利用したユーザー登録/ログイン機能。
+ 　また、ユーザー登録をしなくとも制限機能(記事投稿や記事のお気に入り登録)が利用できる"ゲストログイン機能"も実装しています。
 
-* System dependencies
+・投稿機能(※ユーザー登録必須)
+ → カフェ情報を記事として投稿します。写真は3枚まで投稿できるほか、
+ 　・GoogleMapsAPIを利用することで入力された住所に応じてGoogleMap情報を自動で表示させます。 
+  
+・検索機能
+ → 投稿された全ての記事の中から、「キーワード/Wifi有無/電源コンセント有無」 の3つの要素で記事をソートすることが可能です。
 
-* Configuration
+・画像プレビュー
+ → 記事一覧、及び記事詳細ページにて画像が複数登録されている記事に関しては、画像をクリックすることで拡大画像を表示させます。
+ 
+・ユーザーフォロー機能(※ユーザー登録必須)
+ → ユーザーをフォローし、そのユーザーが投稿する記事一覧に容易にアクセスすることが可能です。
+ 　ヘッダーメニューの「フォロー」からフォローしているユーザーの一覧を確認可能です。
+  
+・いいね機能(※ユーザー登録必須)
+ → 記事詳細画面においてハートマークをクリックすることで記事をお気に入り登録することが可能です。
+ 　ヘッダーメニューの「お気に入り」からお気に入り登録している記事の一覧を確認できます。
+  
+・コメント機能(※ユーザー登録必須)
+　→ 記事詳細画面において記事に対するコメントを投稿可能です。
+ 
+# アプリケーション開発環境
+・Ruby: 2.6.5
+・Rails: 6.0
+・PostgreSQL 12.3
+→ アクセス速度の観点からAWS(EC2 / RDS)へデプロイし、公開しています。
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
